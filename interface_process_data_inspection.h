@@ -25,12 +25,12 @@
 #ifndef __INTERFACE_PROCESS_DATA_INSPECTION_H__
 #define __INTERFACE_PROCESS_DATA_INSPECTION_H__
 
-#include "kernel.h"
-#include "module.h"
-#include "interface_intf.h"
+#include "robotkernel/kernel.h"
+#include "robotkernel/module.h"
+#include "robotkernel/interface_intf.h"
 
 #define LN_UNREGISTER_SERVICE_IN_BASE_DETOR  
-#include "interfaces/process_data_inspection/ln_messages.h"
+#include "ln_messages.h"
 #undef LN_UNREGISTER_SERVICE_IN_BASE_DETOR
 
 #include <list>
@@ -54,8 +54,8 @@ class process_data_inspection :
          */
         process_data_inspection(const std::string& mod_name, const std::string& dev_name, const int& slave_id);
 
-        int on_in(ln::service_request& req, ln_service_process_data_inspection_in& svc);
-        int on_out(ln::service_request& req, ln_service_process_data_inspection_out& svc);
+        int on_in(ln::service_request& req, ln_service_robotkernel_process_data_inspection_in& svc);
+        int on_out(ln::service_request& req, ln_service_robotkernel_process_data_inspection_out& svc);
 };
 
 } // namespace interface

@@ -23,8 +23,15 @@
  */
 
 #include "interface_process_data_inspection.h"
+#include "robotkernel/exceptions.h"
+#undef BUILD_DATE
+#undef PACKAGE
+#undef PACKAGE_NAME
+#undef PACKAGE_STRING
+#undef PACKAGE_TARNAME
+#undef PACAKGE_VERSION
+#undef VERSION
 #include "config.h"
-#include "exceptions.h"
 
 using namespace std;
 using namespace robotkernel;
@@ -50,7 +57,7 @@ process_data_inspection::process_data_inspection(const std::string& mod_name,
 }
 
 
-int process_data_inspection::on_in(ln::service_request& req, ln_service_process_data_inspection_in& svc) {
+int process_data_inspection::on_in(ln::service_request& req, ln_service_robotkernel_process_data_inspection_in& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
     kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDIN, (void *)&pdg);
@@ -61,7 +68,7 @@ int process_data_inspection::on_in(ln::service_request& req, ln_service_process_
     return 0;
 }
 
-int process_data_inspection::on_out(ln::service_request& req, ln_service_process_data_inspection_out& svc) {
+int process_data_inspection::on_out(ln::service_request& req, ln_service_robotkernel_process_data_inspection_out& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
     kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDOUT, (void *)&pdg);
