@@ -11,7 +11,8 @@ requires_version 0.2.43
 
 defines
 interface_process_data_inspection_base: %(dirname %(dirname %(CURDIR)))
-interface_process_data_inspection_libdir: %(interface_process_data_inspection_base)/lib/$(ARCH)
+interface_process_data_inspection_base_type: %(ifexists "%(interface_process_data_inspection_base)/lib/libinterface_process_data_inspection.so", "local_install", "rmpm_release")
+interface_process_data_inspection_libdir: %(ifeq "%(interface_process_data_inspection_base_type)", "local_install", "%(interface_process_data_inspection_base)/lib", "%(interface_process_data_inspection_base)/lib/$(ARCH)")
 add_message_definition_dir: %(interface_process_data_inspection_base)/share/message_definitions 
 
 ifndef rk_interfaces: rk_interfaces: ""

@@ -60,10 +60,15 @@ process_data_inspection::process_data_inspection(const std::string& mod_name,
 int process_data_inspection::on_in(ln::service_request& req, ln_service_robotkernel_process_data_inspection_in& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
-    kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDIN, (void *)&pdg);
+    int ret = kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDIN, (void *)&pdg);
 
-    svc.resp.data = (uint8_t *)pdg.pd;
-    svc.resp.data_len = pdg.len;
+    if(ret == -1) {
+	    svc.resp.data = NULL;
+	    svc.resp.data_len = 0;
+    } else {
+	    svc.resp.data = (uint8_t *)pdg.pd;
+	    svc.resp.data_len = pdg.len;
+    }
     req.respond();
     return 0;
 }
@@ -71,10 +76,15 @@ int process_data_inspection::on_in(ln::service_request& req, ln_service_robotker
 int process_data_inspection::on_out(ln::service_request& req, ln_service_robotkernel_process_data_inspection_out& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
-    kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDOUT, (void *)&pdg);
+    int ret = kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDOUT, (void *)&pdg);
 
-    svc.resp.data = (uint8_t *)pdg.pd;
-    svc.resp.data_len = pdg.len;
+    if(ret == -1) {
+	    svc.resp.data = NULL;
+	    svc.resp.data_len = 0;
+    } else {
+	    svc.resp.data = (uint8_t *)pdg.pd;
+	    svc.resp.data_len = pdg.len;
+    }
     req.respond();
     return 0;
 }

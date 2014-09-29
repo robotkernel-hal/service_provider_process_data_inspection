@@ -13,6 +13,8 @@ if test -n "$SOURCE_ENV"; then
    source $SOURCE_ENV
 fi
 
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_AWK
@@ -51,7 +53,7 @@ AC_SUBST(ARCH_CFLAGS)
 PKG_CHECK_MODULES([ROBOTKERNEL], [robotkernel], [], [
                     RMPM_CHECK_MODULES([ROBOTKERNEL], [robotkernel.robotkernel])
                    ])
-LN_BASE=$(env -i "$srcdir"/scripts/get_ln_base.py $ROBOTKERNEL_DEPENDS)
+LN_BASE=$(env -i "LN_BASE=$LN_BASE" "$srcdir"/scripts/get_ln_base.py $ROBOTKERNEL_DEPENDS)
 LN_GENERATE_ARGS='-md_dir $(srcdir)/message_definitions'
 LN_GENERATE="env -i $LN_BASE/scripts/ln_generate $LN_GENERATE_ARGS"
 
