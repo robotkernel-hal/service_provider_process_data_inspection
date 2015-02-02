@@ -10,10 +10,9 @@ libinterface_process_data_inspection_la_CXXFLAGS = -fno-strict-aliasing -Wall -I
 										   -I$(top_builddir) @ROBOTKERNEL_CFLAGS@ 
 libinterface_process_data_inspection_la_LDFLAGS  = -Wall -release $(PACKAGE_VERSION)
 
-VPATH = $(srcdir):$(srcdir)/message_definitions
+VPATH = $(srcdir):$(srcdir)/share/message_definitions
 
-LN_MESSAGES = \
-			  robotkernel/process_data_inspection/in \
+LN_MESSAGES = robotkernel/process_data_inspection/in \
 			  robotkernel/process_data_inspection/out
 
 ln_messages.h: Makefile $(LN_MESSAGES)
@@ -22,6 +21,6 @@ ln_messages.h: Makefile $(LN_MESSAGES)
 	touch $@
 
 install-exec-hook:
-	cp -r $(srcdir)/share $(prefix)
-	mkdir -p $(prefix)/share/message_definitions
-	cp -r $(srcdir)/message_definitions/* $(prefix)/share/message_definitions/
+	mkdir -p $(prefix)/share
+	-cp -rf $(srcdir)/share/* $(prefix)/share/
+

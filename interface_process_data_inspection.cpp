@@ -1,9 +1,11 @@
-//! robotkernel module class
+//! robotkernel interface process data inspection
 /*!
  * author: Robert Burger
  *
  * $Id$
  */
+
+// vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
 
 /*
  * This file is part of robotkernel.
@@ -23,6 +25,7 @@
  */
 
 #include "interface_process_data_inspection.h"
+#include "robotkernel/kernel.h"
 #include "robotkernel/exceptions.h"
 #undef BUILD_DATE
 #undef PACKAGE
@@ -40,6 +43,8 @@ using namespace interface;
 //! default construction
 /*!
  * \param mod_name module name to register for
+ * \param dev_name interface device name
+ * \param slvae_id module slave id
  */
 process_data_inspection::process_data_inspection(const std::string& mod_name, 
         const std::string& dev_name, const int& slave_id) 
@@ -56,8 +61,9 @@ process_data_inspection::process_data_inspection(const std::string& mod_name,
     register_out(k.clnt, base.str() + "process_data_inspection.out");
 }
 
-
-int process_data_inspection::on_in(ln::service_request& req, ln_service_robotkernel_process_data_inspection_in& svc) {
+//! request input process data
+int process_data_inspection::on_in(ln::service_request& req,
+        ln_service_robotkernel_process_data_inspection_in& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
     int ret = kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDIN, (void *)&pdg);
@@ -69,11 +75,14 @@ int process_data_inspection::on_in(ln::service_request& req, ln_service_robotker
 	    svc.resp.data = (uint8_t *)pdg.pd;
 	    svc.resp.data_len = pdg.len;
     }
+
     req.respond();
     return 0;
 }
 
-int process_data_inspection::on_out(ln::service_request& req, ln_service_robotkernel_process_data_inspection_out& svc) {
+//! request output process data
+int process_data_inspection::on_out(ln::service_request& req,
+        ln_service_robotkernel_process_data_inspection_out& svc) {
     process_data_t pdg;
     pdg.slave_id = _slave_id;
     int ret = kernel::request_cb(_mod_name.c_str(), MOD_REQUEST_GET_PDOUT, (void *)&pdg);
@@ -85,6 +94,7 @@ int process_data_inspection::on_out(ln::service_request& req, ln_service_robotke
 	    svc.resp.data = (uint8_t *)pdg.pd;
 	    svc.resp.data_len = pdg.len;
     }
+
     req.respond();
     return 0;
 }

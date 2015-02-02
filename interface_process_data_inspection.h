@@ -5,6 +5,8 @@
  * $Id$
  */
 
+// vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
+
 /*
  * This file is part of robotkernel.
  *
@@ -25,15 +27,9 @@
 #ifndef __INTERFACE_PROCESS_DATA_INSPECTION_H__
 #define __INTERFACE_PROCESS_DATA_INSPECTION_H__
 
-#include "robotkernel/kernel.h"
-#include "robotkernel/module.h"
-#include "robotkernel/interface_intf.h"
-
 #define LN_UNREGISTER_SERVICE_IN_BASE_DETOR  
 #include "ln_messages.h"
 #undef LN_UNREGISTER_SERVICE_IN_BASE_DETOR
-
-#include <list>
 
 #define INTFNAME "[interface_process_data_inspection] "
 
@@ -51,11 +47,19 @@ class process_data_inspection :
         //! default construction
         /*!
          * \param mod_name module name to register for
+         * \param dev_name interface device name
+         * \param slvae_id module slave id
          */
-        process_data_inspection(const std::string& mod_name, const std::string& dev_name, const int& slave_id);
+        process_data_inspection(const std::string& mod_name, 
+                const std::string& dev_name, const int& slave_id);
 
-        int on_in(ln::service_request& req, ln_service_robotkernel_process_data_inspection_in& svc);
-        int on_out(ln::service_request& req, ln_service_robotkernel_process_data_inspection_out& svc);
+        //! request input process data
+        int on_in(ln::service_request& req, 
+                ln_service_robotkernel_process_data_inspection_in& svc);
+
+        //! request output process data
+        int on_out(ln::service_request& req, 
+                ln_service_robotkernel_process_data_inspection_out& svc);
 };
 
 } // namespace interface
