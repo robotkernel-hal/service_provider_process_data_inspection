@@ -2,10 +2,11 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([interface_process_data_inspection], [3.1.0], [robert.burger@dlr.de])
+AC_INIT([interface_process_data_inspection], [3.1.1], [robert.burger@dlr.de])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
+m4_include([scripts/m4/rmpm.m4])
 
 # load env-file with each make invocation
 if test -n "$SOURCE_ENV"; then
@@ -44,11 +45,6 @@ AC_SUBST(SET_MAKE)
 
 # setup rmpm
 RMPM_ARCH
-
-if test "$rmpm_host" == "arm-angstrom-linux-gnueabi"; then
-   ARCH_CFLAGS="-DNO_RDTSC"
-fi
-AC_SUBST(ARCH_CFLAGS)
 
 PKG_CHECK_MODULES([ROBOTKERNEL], [robotkernel], [], [
                     RMPM_CHECK_MODULES([ROBOTKERNEL], [robotkernel.robotkernel])
