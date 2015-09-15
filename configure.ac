@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([interface_process_data_inspection], [3.1.1], [robert.burger@dlr.de])
+AC_INIT([interface_process_data_inspection], [4.0.0], [robert.burger@dlr.de])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -46,10 +46,11 @@ AC_SUBST(SET_MAKE)
 # setup rmpm
 RMPM_ARCH
 
+# yaml-cpp 
 PKG_CHECK_MODULES([ROBOTKERNEL], [robotkernel], [], [
                     RMPM_CHECK_MODULES([ROBOTKERNEL], [robotkernel.robotkernel])
                    ])
-LN_BASE=$(env -i "LN_BASE=$LN_BASE" "$srcdir"/scripts/get_ln_base.py $ROBOTKERNEL_DEPENDS)
+LN_BASE=$(env -i "LN_BASE=$LN_BASE" "$srcdir"/scripts/get_ln_base.py $ROBOTKERNEL_CXX_DEPENDS)
 LN_GENERATE_ARGS='-md_dir $(srcdir)/share/message_definitions'
 LN_GENERATE="env -i $LN_BASE/scripts/ln_generate $LN_GENERATE_ARGS"
 

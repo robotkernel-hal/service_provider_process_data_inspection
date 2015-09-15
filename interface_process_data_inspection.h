@@ -27,31 +27,28 @@
 #ifndef __INTERFACE_PROCESS_DATA_INSPECTION_H__
 #define __INTERFACE_PROCESS_DATA_INSPECTION_H__
 
+#include "robotkernel/kernel.h"
+#include "robotkernel/interface_base.h"
+
 #define LN_UNREGISTER_SERVICE_IN_BASE_DETOR  
 #include "ln_messages.h"
 #undef LN_UNREGISTER_SERVICE_IN_BASE_DETOR
 
 #define INTFNAME "[interface_process_data_inspection] "
 
-namespace interface {
+namespace interface_process_data_inspection {
     
 class process_data_inspection : 
+    public robotkernel::interface_base,
     public ln_service_in_base,
     public ln_service_out_base
 {
-    std::string _mod_name;
-    std::string _dev_name;
-    int _slave_id;
-
     public:
         //! default construction
         /*!
-         * \param mod_name module name to register for
-         * \param dev_name interface device name
-         * \param slvae_id module slave id
+         * \param node configuration node 
          */
-        process_data_inspection(const std::string& mod_name, 
-                const std::string& dev_name, const int& slave_id);
+        process_data_inspection(const YAML::Node& node);
 
         //! request input process data
         int on_in(ln::service_request& req, 
