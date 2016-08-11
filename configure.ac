@@ -49,16 +49,8 @@ AC_SUBST(SET_MAKE)
 # setup rmpm
 RMPM_ARCH
 
-# yaml-cpp 
-PKG_CHECK_MODULES([ROBOTKERNEL], [robotkernel], [], [
-                    RMPM_CHECK_MODULES([ROBOTKERNEL], [robotkernel.robotkernel])
-                   ])
-LN_BASE=$(env -i "LN_BASE=$LN_BASE" "$srcdir"/scripts/get_ln_base.py $ROBOTKERNEL_CXX_DEPENDS)
-LN_GENERATE_ARGS='-md_dir $(srcdir)/share/message_definitions'
-LN_GENERATE="env -i $LN_BASE/scripts/ln_generate $LN_GENERATE_ARGS"
-
-AC_SUBST(LN_BASE)
-AC_SUBST(LN_GENERATE)
+m4_esyscmd([scripts/m4_deps.py])
+RM_FIND_LN_FROM_ENV
 
 AC_DEFINE_UNQUOTED(BUILD_DATE,"`date -u`",[Date (usually date of extraction from SVN).])
 AC_DEFINE_UNQUOTED(BUILD_USER,"`whoami`",[User (usually user logged in on shell).])
