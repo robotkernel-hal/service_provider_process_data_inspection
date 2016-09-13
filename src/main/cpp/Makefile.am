@@ -21,5 +21,5 @@ ln_messages.h: Makefile $(LN_MESSAGES)
 
 install-exec-hook:
 	mkdir -p $(prefix)/share
-	-cp -rf $(top_srcdir)/share/* $(prefix)/share/
+	-cp -rf $(top_srcdir)/share/* $(DESTDIR)$(prefix)/share/
 

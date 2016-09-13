@@ -16,3 +16,4 @@ m4/
 missing
 src/main/cpp/Makefile.in
 config.h.in~
+/compile
