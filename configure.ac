@@ -71,7 +71,7 @@ AC_SUBST(DL_LIBS)
 
 
 AC_CONFIG_FILES([Makefile src/main/cpp/Makefile])
-AC_CONFIG_FILES([interface_process_data_inspection.pt], [cp interface_process_data_inspection.pt ${ac_abs_top_srcdir}])
+
 
 AC_OUTPUT
 
