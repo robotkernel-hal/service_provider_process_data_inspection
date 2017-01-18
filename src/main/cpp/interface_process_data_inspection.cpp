@@ -29,7 +29,8 @@
 #include "robotkernel/helpers.h"
 #include "robotkernel/exceptions.h"
 
-INTERFACE_DEF(process_data_inspection, interface_process_data_inspection::process_data_inspection)
+INTERFACE_DEF(process_data_inspection, 
+        interface_process_data_inspection::process_data_inspection)
 
 using namespace std;
 using namespace robotkernel;
@@ -44,58 +45,93 @@ using namespace interface_process_data_inspection;
 process_data_inspection::process_data_inspection(const YAML::Node& node)
 : interface_base("process_data_inspection", node) {
     kernel& k = *kernel::get_instance();
-    if (!k.clnt)
-        throw str_exception("[interface_sercos_protocol|%s] no ln_connection!\n", 
-                mod_name.c_str());
     
     stringstream base;
-    base << k.clnt->name << "." << mod_name << "." << dev_name;
+    base << mod_name << "." << dev_name << ".process_data_inspection.";
 
-    register_in (k.clnt, base.str() + ".process_data_inspection.in");
-    register_out(k.clnt, base.str() + ".process_data_inspection.out");
+    k.add_service(mod_name, base.str() + "in", service_definition_in,
+            boost::bind(&process_data_inspection::service_in, this, _1));
+    k.add_service(mod_name, base.str() + "out", service_definition_out,
+            boost::bind(&process_data_inspection::service_out, this, _1));
 }
 
-//! request input process data
-int process_data_inspection::on_in(ln::service_request& req,
-        ln_service_robotkernel_process_data_inspection_in& svc) {
+//! service callback request input process data
+/*!
+ * \param message service message
+ * \return success
+ */
+int process_data_inspection::service_in(YAML::Node& message) {
     process_data_t pdg;
     pdg.slave_id = slave_id;
+
+    // default response values
+    std::vector<uint16_t> data;
+    message["response"]["data"] = data;
+    message["response"]["error_message"] = "";
 
     log(verbose, "pdin for slave_id %d requested\n", slave_id);
 
-    int ret = kernel::request_cb(mod_name.c_str(), MOD_REQUEST_GET_PDIN, (void *)&pdg);
+    int ret = kernel::request_cb(mod_name.c_str(), 
+            MOD_REQUEST_GET_PDIN, (void *)&pdg);
 
     if(ret == -1) {
-	    svc.resp.data = NULL;
-	    svc.resp.data_len = 0;
+        message["response"]["error_message"] = 
+            "gettings process data in failed\n";
     } else {
-	    svc.resp.data = (uint8_t *)pdg.pd;
-	    svc.resp.data_len = pdg.len;
+        uint8_t *tmp = (uint8_t *)pdg.pd;
+        data.resize(pdg.len);
+
+        for (unsigned i = 0; i < pdg.len; ++i)
+            data[i] = tmp[i];
+    
+        message["response"]["data"] = data;
     }
 
-    req.respond();
     return 0;
 }
+        
+const std::string process_data_inspection::service_definition_in =
+    "response:\n"
+    "   uint8_t*: data\n"
+    "   string: error_message\n";
 
-//! request output process data
-int process_data_inspection::on_out(ln::service_request& req,
-        ln_service_robotkernel_process_data_inspection_out& svc) {
+//! service callback request output process data
+/*!
+ * \param message service message
+ * \return success
+ */
+int process_data_inspection::service_out(YAML::Node& message) {
     process_data_t pdg;
     pdg.slave_id = slave_id;
-    
+
+    // default response values
+    std::vector<uint16_t> data;
+    message["response"]["data"] = data;
+    message["response"]["error_message"] = "";
+
     log(verbose, "pdout for slave_id %d requested\n", slave_id);
 
-    int ret = kernel::request_cb(mod_name.c_str(), MOD_REQUEST_GET_PDOUT, (void *)&pdg);
+    int ret = kernel::request_cb(mod_name.c_str(), 
+            MOD_REQUEST_GET_PDOUT, (void *)&pdg);
 
     if(ret == -1) {
-	    svc.resp.data = NULL;
-	    svc.resp.data_len = 0;
+        message["response"]["error_message"] = 
+            "gettings process data out failed\n";
     } else {
-	    svc.resp.data = (uint8_t *)pdg.pd;
-	    svc.resp.data_len = pdg.len;
+        uint8_t *tmp = (uint8_t *)pdg.pd;
+        data.resize(pdg.len);
+
+        for (unsigned i = 0; i < pdg.len; ++i)
+            data[i] = tmp[i];
+    
+        message["response"]["data"] = data;
     }
 
-    req.respond();
     return 0;
 }
+        
+const std::string process_data_inspection::service_definition_out =
+    "response:\n"
+    "   uint8_t*: data\n"
+    "   string: error_message\n";
 

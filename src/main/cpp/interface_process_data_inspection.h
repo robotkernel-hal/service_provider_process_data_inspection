@@ -30,33 +30,31 @@
 #include "robotkernel/kernel.h"
 #include "robotkernel/interface_base.h"
 
-#define LN_UNREGISTER_SERVICE_IN_BASE_DETOR  
-#include "ln_messages.h"
-#undef LN_UNREGISTER_SERVICE_IN_BASE_DETOR
-
-#define INTFNAME "[interface_process_data_inspection] "
-
 namespace interface_process_data_inspection {
     
-class process_data_inspection : 
-    public robotkernel::interface_base,
-    public ln_service_in_base,
-    public ln_service_out_base
-{
+class process_data_inspection : public robotkernel::interface_base {
     public:
         //! default construction
         /*!
          * \param node configuration node 
          */
         process_data_inspection(const YAML::Node& node);
+        
+        //! service callback request input process data
+        /*!
+         * \param message service message
+         * \return success
+         */
+        int service_in(YAML::Node& message);
+        static const std::string service_definition_in;
 
-        //! request input process data
-        int on_in(ln::service_request& req, 
-                ln_service_robotkernel_process_data_inspection_in& svc);
-
-        //! request output process data
-        int on_out(ln::service_request& req, 
-                ln_service_robotkernel_process_data_inspection_out& svc);
+        //! service callback request output process data
+        /*!
+         * \param message service message
+         * \return success
+         */
+        int service_out(YAML::Node& message);
+        static const std::string service_definition_out;
 };
 
 } // namespace interface
