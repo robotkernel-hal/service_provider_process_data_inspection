@@ -39,12 +39,7 @@ using namespace interface_process_data_inspection;
 
 const char* interface_process_data_inspection::process_data_inspection_sp_magic = "process_data_inspection"; 
 
-//! default construction
-/*!
- * \param mod_name module name to register for
- * \param dev_name interface device name
- * \param slvae_id module slave id
- */
+//! handler construction
 process_data_inspection_handler::process_data_inspection_handler(
 		std::string mod_name, std::string dev_name, int slave_id) : 
 	log_base(mod_name, (mod_name + "." + dev_name + ".process_data_inspection")), 
