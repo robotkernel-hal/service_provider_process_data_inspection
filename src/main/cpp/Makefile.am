@@ -1,6 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4 
 
-libdir = $(prefix)/lib
 lib_LTLIBRARIES = libservice_provider_process_data_inspection.la
 
 extraincludedir = $(includedir)/service_provider/process_data_inspection
