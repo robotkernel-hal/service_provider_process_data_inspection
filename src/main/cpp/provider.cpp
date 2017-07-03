@@ -41,9 +41,9 @@ using namespace service_provider;
 using namespace string_util;
 
 //! handler construction
-process_data_inspection::handler::handler(const robotkernel::sp_service_requester_t& req) 
+process_data_inspection::handler::handler(const robotkernel::sp_service_collector_device_t& req) 
     : log_base("process_data_inspection", 
-            req->owner + "." + req->service_prefix + ".process_data_inspection") {
+            req->owner + "." + req->device_name + ".process_data_inspection") {
 
     _instance = std::dynamic_pointer_cast<process_data_inspection::base>(req);
     if (!_instance)
@@ -52,7 +52,7 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_requeste
     kernel& k = *kernel::get_instance();
 
     stringstream base;
-    base << _instance->owner << "." << _instance->service_prefix << ".process_data_inspection.";
+    base << _instance->device_name << ".process_data_inspection.";
 
     k.add_service(_instance->owner, base.str() + "in", service_definition_in,
             std::bind(&process_data_inspection::handler::service_in, this, _1, _2));
@@ -65,9 +65,9 @@ process_data_inspection::handler::~handler() {
     kernel& k = *kernel::get_instance();
 
     stringstream base;
-    base << _instance->owner << "." << _instance->service_prefix << ".process_data_inspection.";
-    k.remove_service(base.str() + "in");
-    k.remove_service(base.str() + "out");
+    base << _instance->device_name << ".process_data_inspection.";
+    k.remove_service(_instance->owner, base.str() + "in");
+    k.remove_service(_instance->owner, base.str() + "out");
 };
 
 //! service callback request input process data
@@ -86,7 +86,7 @@ int process_data_inspection::handler::service_in(
     string error_message;
 
     log(verbose, "pdin %s:%s requested\n", _instance->owner.c_str(), 
-            _instance->service_prefix.c_str());
+            _instance->device_name.c_str());
 
     try {
         _instance->get_pdin(data_in);
@@ -124,7 +124,7 @@ int process_data_inspection::handler::service_out(const robotkernel::service_arg
     string error_message;
 
     log(verbose, "pdout %s:%s requested\n", _instance->owner.c_str(), 
-            _instance->service_prefix.c_str());
+            _instance->device_name.c_str());
 
     try {
         _instance->get_pdout(data_out);

@@ -34,58 +34,73 @@
 #include "service_provider/process_data_inspection/base.h"
 
 namespace service_provider {
+#ifdef EMACS
+}
+#endif
 
-    namespace process_data_inspection {
+namespace process_data_inspection {
+#ifdef EMACS
+}
+#endif
 
-        // forward declaration
-        class handler;
+// forward declaration
+class handler;
 
-        class provider : public robotkernel::service_provider_base<handler, base> {
-            public:
-                //! default construction
-                /*!
-                */
-                provider()
-                    : service_provider_base("process_data_inspection") {};
+class provider : 
+    public robotkernel::service_provider_base<handler, base> 
+{
+    public:
+        //! default construction
+        /*!
+        */
+        provider()
+            : service_provider_base("process_data_inspection") {};
 
-                ~provider() {};
+        ~provider() {};
+};
 
-        };
+class handler : 
+    public robotkernel::log_base 
+{
+    public:
+        typedef std::shared_ptr<process_data_inspection::base> base_t;
+        base_t _instance;
 
-        class handler : public robotkernel::log_base {
-            public:
-                typedef std::shared_ptr<process_data_inspection::base> base_t;
-                base_t _instance;
+        //! handler construction
+        handler(const robotkernel::sp_service_collector_device_t& req);
 
-                //! handler construction
-                handler(const robotkernel::sp_service_requester_t& req);
+        //! handler destruction
+        ~handler();
 
-                //! handler destruction
-                ~handler();
+        //! service callback request input process data
+        /*!
+         * \param request service request data
+         * \parma response service response data
+         * \return success
+         */
+        int service_in(const robotkernel::service_arglist_t& request, 
+                robotkernel::service_arglist_t& response);
+        static const std::string service_definition_in;
 
-                //! service callback request input process data
-                /*!
-                 * \param request service request data
-                 * \parma response service response data
-                 * \return success
-                 */
-                int service_in(const robotkernel::service_arglist_t& request, 
-                        robotkernel::service_arglist_t& response);
-                static const std::string service_definition_in;
+        //! service callback request output process data
+        /*!
+         * \param request service request data
+         * \parma response service response data
+         * \return success
+         */
+        int service_out(const robotkernel::service_arglist_t& request, 
+                robotkernel::service_arglist_t& response);
+        static const std::string service_definition_out;
+};
 
-                //! service callback request output process data
-                /*!
-                 * \param request service request data
-                 * \parma response service response data
-                 * \return success
-                 */
-                int service_out(const robotkernel::service_arglist_t& request, 
-                        robotkernel::service_arglist_t& response);
-                static const std::string service_definition_out;
-        };
+#ifdef EMACS
+{
+#endif
+}; // namespace process data inspection
 
-    }; // namespace process data inspection
-
+#ifdef EMACS
+{
+#endif
 }; // namespace interface
 
 #endif // __INTERFACE_PROCESS_DATA_INSPECTION_H__
