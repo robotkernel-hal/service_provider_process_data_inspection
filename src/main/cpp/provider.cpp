@@ -24,7 +24,7 @@
  * along with robotkernel.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "service_provider/process_data_inspection/provider.h"
+#include "provider.h"
 
 #include "robotkernel/kernel.h"
 #include "robotkernel/helpers.h"
@@ -41,7 +41,7 @@ using namespace service_provider;
 using namespace string_util;
 
 //! handler construction
-process_data_inspection::handler::handler(const robotkernel::sp_service_collector_device_t& req) 
+process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
     : log_base("process_data_inspection", 
             req->owner + "." + req->device_name + ".process_data_inspection") {
 
