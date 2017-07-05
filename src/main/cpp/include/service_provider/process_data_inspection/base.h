@@ -47,7 +47,7 @@ class base :
     public:
         //! construction
         base(std::string owner, std::string service_prefix)
-            : robotkernel::service_interface(owner, service_prefix) {};
+            : robotkernel::service_interface(owner, service_prefix + ".process_data_inspection") {};
 
         //! destruction
         virtual ~base() = 0;

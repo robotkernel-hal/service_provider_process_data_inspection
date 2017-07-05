@@ -51,23 +51,17 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_interfac
 
     kernel& k = *kernel::get_instance();
 
-    stringstream base;
-    base << _instance->device_name << ".process_data_inspection.";
-
-    k.add_service(_instance->owner, base.str() + "in", service_definition_in,
+    k.add_service(_instance->owner, _instance->device_name + ".in", service_definition_in,
             std::bind(&process_data_inspection::handler::service_in, this, _1, _2));
-    k.add_service(_instance->owner, base.str() + "out", service_definition_out,
+    k.add_service(_instance->owner, _instance->device_name + ".out", service_definition_out,
             std::bind(&process_data_inspection::handler::service_out, this, _1, _2));
 }
 
 //! handler destruction
 process_data_inspection::handler::~handler() {
     kernel& k = *kernel::get_instance();
-
-    stringstream base;
-    base << _instance->device_name << ".process_data_inspection.";
-    k.remove_service(_instance->owner, base.str() + "in");
-    k.remove_service(_instance->owner, base.str() + "out");
+    k.remove_service(_instance->owner, _instance->device_name + ".in");
+    k.remove_service(_instance->owner, _instance->device_name + ".out");
 };
 
 //! service callback request input process data
