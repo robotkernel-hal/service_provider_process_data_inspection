@@ -100,8 +100,8 @@ int process_data_inspection::handler::service_in(
 
 const std::string process_data_inspection::handler::service_definition_in =
 "response:\n"
-"   vector/uint8_t: data\n"
-"   string: error_message\n";
+"- vector/uint8_t: data\n"
+"- string: error_message\n";
 
 //! service callback request output process data
 /*!
@@ -138,6 +138,6 @@ int process_data_inspection::handler::service_out(const robotkernel::service_arg
 
 const std::string process_data_inspection::handler::service_definition_out =
 "response:\n"
-"   vector/uint8_t: data\n"
-"   string: error_message\n";
+"- vector/uint8_t: data\n"
+"- string: error_message\n";
 
