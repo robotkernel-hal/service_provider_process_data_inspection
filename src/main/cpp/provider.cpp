@@ -42,7 +42,7 @@ using namespace string_util;
 
 //! handler construction
 process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
-    : log_base("process_data_inspection", req->owner + "." + req->device_name) {
+    : log_base(req->owner, "process_data_inspection", req->device_name) {
 
     _instance = std::dynamic_pointer_cast<process_data_inspection::base>(req);
     if (!_instance)

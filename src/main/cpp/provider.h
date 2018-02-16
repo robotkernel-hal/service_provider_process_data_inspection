@@ -53,8 +53,8 @@ class provider :
         //! default construction
         /*!
         */
-        provider()
-            : service_provider_base("process_data_inspection") {};
+        provider(const std::string& name)
+            : service_provider_base(name, "process_data_inspection") {};
 
         ~provider() {};
 };
