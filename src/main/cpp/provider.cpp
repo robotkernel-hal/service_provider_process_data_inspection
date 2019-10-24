@@ -98,6 +98,7 @@ int process_data_inspection::handler::service_in(
 }
 
 const std::string process_data_inspection::handler::service_definition_in =
+"name: service_provider/process_data_inspection/in\n"
 "response:\n"
 "- vector/uint8_t: data\n"
 "- string: error_message\n";
@@ -136,6 +137,7 @@ int process_data_inspection::handler::service_out(const robotkernel::service_arg
 }
 
 const std::string process_data_inspection::handler::service_definition_out =
+"name: service_provider/process_data_inspection/out\n"
 "response:\n"
 "- vector/uint8_t: data\n"
 "- string: error_message\n";
