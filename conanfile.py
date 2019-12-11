@@ -6,5 +6,5 @@ class MainProject(base.RobotkernelConanFile):
     name = "service_provider_process_data_inspection"
     description = "robotkernel-5 service provider for process data inspeciton."
     exports_sources = ["*", "!.gitignore"] + ["!%s" % x for x in tools.Git().excluded_files()]
-    requires = "robotkernel/[~=5.0]@robotkernel/stable"
+    requires = "robotkernel/[~=5]@robotkernel/stable"
 
