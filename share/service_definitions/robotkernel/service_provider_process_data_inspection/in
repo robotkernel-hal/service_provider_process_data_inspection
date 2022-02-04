@@ -1,0 +1,5 @@
+name: service_provider_process_data_inspection/in
+response:
+- vector/uint8_t: data
+- string: error_message
+

@@ -25,6 +25,7 @@
  */
 
 #include "provider.h"
+#include "service_definitions.h"
 
 #include "robotkernel/kernel.h"
 #include "robotkernel/helpers.h"
@@ -39,6 +40,9 @@ using namespace std::placeholders;
 using namespace robotkernel;
 using namespace service_provider;
 using namespace string_util;
+
+const std::string process_data_inspection::handler::service_definition_in = robotkernel_service_provider_process_data_inspection_in_service_definition;
+const std::string process_data_inspection::handler::service_definition_out = robotkernel_service_provider_process_data_inspection_out_service_definition;
 
 //! handler construction
 process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
@@ -97,12 +101,6 @@ int process_data_inspection::handler::service_in(
     return 0;
 }
 
-const std::string process_data_inspection::handler::service_definition_in =
-"name: service_provider/process_data_inspection/in\n"
-"response:\n"
-"- vector/uint8_t: data\n"
-"- string: error_message\n";
-
 //! service callback request output process data
 /*!
  * \param request service request data
@@ -136,9 +134,4 @@ int process_data_inspection::handler::service_out(const robotkernel::service_arg
     return 0;
 }
 
-const std::string process_data_inspection::handler::service_definition_out =
-"name: service_provider/process_data_inspection/out\n"
-"response:\n"
-"- vector/uint8_t: data\n"
-"- string: error_message\n";
 
