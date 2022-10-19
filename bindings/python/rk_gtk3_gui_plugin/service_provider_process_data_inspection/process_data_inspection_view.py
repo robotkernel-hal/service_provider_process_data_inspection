@@ -36,7 +36,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
         helpers.builder_base.__init__(self, fn, 'process_data_inspection_box', 'pdi_adjustment')
         helpers.service_provider_view.__init__(self, parent.app, parent, self.process_data_inspection_box, 'in')
 
-        container.pack_start(self.process_data_inspection_box, True, True)
+        container.pack_start(self.process_data_inspection_box, True, True, 0)
 
         fd = helpers.gui_utils.get_monospace_font_description()
         self.in_tv.modify_font(fd)
