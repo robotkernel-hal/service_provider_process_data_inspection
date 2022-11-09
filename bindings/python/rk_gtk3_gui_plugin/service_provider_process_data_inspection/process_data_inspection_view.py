@@ -19,7 +19,7 @@ along with Robotkernel-GUI.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import absolute_import
 
 import os, traceback
-from math import *
+import math
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -73,7 +73,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
     def generate_hex_listing(self, data, line_len=16):
         text = ["%d bytes:" % len(data)]
         if len(data) > 0:
-            ml = 2 * int(ceil(log(len(data)) / log(2) / 8.))
+            ml = 2 * int(ceil(log(len(data)) / math.log(2) / 8.))
             ml = max(ml, 2)
             o = 0
             while o < len(data):
