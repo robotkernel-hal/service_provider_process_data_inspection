@@ -73,7 +73,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
     def generate_hex_listing(self, data, line_len=16):
         text = ["%d bytes:" % len(data)]
         if len(data) > 0:
-            ml = 2 * int(ceil(log(len(data)) / math.log(2) / 8.))
+            ml = 2 * int(math.ceil(math.log(len(data)) / math.log(2) / 8.))
             ml = max(ml, 2)
             o = 0
             while o < len(data):
