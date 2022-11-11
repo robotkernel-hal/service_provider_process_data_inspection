@@ -17,7 +17,9 @@ You should have received a copy of the GNU General Public License
 along with Robotkernel-GUI.  If not, see <http://www.gnu.org/licenses/>.
 '''
 from __future__ import absolute_import
+from __future__ import division
 
+from builtins import zip
 import os, traceback
 from math import *
 
@@ -77,7 +79,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
             ml = max(ml, 2)
             o = 0
             while o < len(data):
-                text.append("0x%0*x  %s" % (ml, o, " ".join(map(lambda f: "%02x" % f, data[o:o+line_len]))))
+                text.append("0x%0*x  %s" % (ml, o, " ".join(["%02x" % f for f in data[o:o+line_len]])))
                 o += line_len
         return "\n".join(text)
 

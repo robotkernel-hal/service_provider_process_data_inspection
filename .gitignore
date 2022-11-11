@@ -29,3 +29,4 @@
 /compile
 /workspace-release
 share/ln/service_provider_process_data_inspection.inc.lnc
+/bindings/python/rk_gtk3_gui_plugin/service_provider_process_data_inspection/process_data_inspection_view.py.bak
