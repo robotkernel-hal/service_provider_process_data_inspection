@@ -28,6 +28,8 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('GLib', '2.0')
 from gi.repository import Gtk
 from gi.repository import GObject
+import logging
+logger = logging.getLogger()
 
 
 import helpers
@@ -40,7 +42,12 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
         helpers.service_provider_view.__init__(self, parent.app, parent, self.process_data_inspection_box, 'in')
 
         # remove all previous content of the container
-        container.foreach(self.remove)
+        def print_wids(widget, user_data=None):
+            logger.info("pdi_view: container {} contains {}".format(str(container),
+                                                                    str(widget)))
+            
+        container.foreach(print_wids, None)
+        #container.foreach(container.remove, None)
         container.pack_start(self.process_data_inspection_box, True, True, 0)
 
         fd = helpers.gui_utils.get_monospace_font_description()
