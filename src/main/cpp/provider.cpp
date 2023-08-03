@@ -41,97 +41,48 @@ using namespace robotkernel;
 using namespace service_provider;
 using namespace string_util;
 
-const std::string process_data_inspection::handler::service_definition_in = robotkernel_service_provider_process_data_inspection_in_service_definition;
-const std::string process_data_inspection::handler::service_definition_out = robotkernel_service_provider_process_data_inspection_out_service_definition;
-
 //! handler construction
 process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
-    : log_base(req->owner, "process_data_inspection", req->device_name) {
-
+    : log_base(req->owner, "process_data_inspection", req->device_name) 
+{
     _instance = std::dynamic_pointer_cast<process_data_inspection::base>(req);
     if (!_instance)
         throw str_exception("wrong base class");
 
-    kernel& k = *kernel::get_instance();
-
-    k.add_service(_instance->owner, _instance->device_name + ".in", service_definition_in,
-            std::bind(&process_data_inspection::handler::service_in, this, _1, _2));
-    k.add_service(_instance->owner, _instance->device_name + ".out", service_definition_out,
-            std::bind(&process_data_inspection::handler::service_out, this, _1, _2));
+    add_svc_in(_instance->owner, _instance->device_name + ".in");
+    add_svc_out(_instance->owner, _instance->device_name + ".out");
 }
 
-//! handler destruction
-process_data_inspection::handler::~handler() {
-    kernel& k = *kernel::get_instance();
-    k.remove_service(_instance->owner, _instance->device_name + ".in");
-    k.remove_service(_instance->owner, _instance->device_name + ".out");
-};
-
-//! service callback request input process data
+//! svc_in
 /*!
- * \param request service request data
- * \parma response service response data
- * \return success
+ * \param[in]   req     Service request data.
+ * \param[out]  resp    Service response data.
  */
-int process_data_inspection::handler::service_in(
-        const robotkernel::service_arglist_t& request, 
-        robotkernel::service_arglist_t& response) {
-    pd_t data_in;
-
-    // default response values
-    std::vector<rk_type> data;
-    string error_message;
-
+void process_data_inspection::handler::svc_in(const struct svc_req_in& req, struct svc_resp_in& resp) {
     log(verbose, "pdin %s:%s requested\n", _instance->owner.c_str(), 
             _instance->device_name.c_str());
 
     try {
-        _instance->get_pdin(data_in);
-        data.assign(data_in.begin(), data_in.end());
+        _instance->get_pdin(resp.data);
     } catch (std::exception& e) {
-        error_message = e.what();
+        resp.error_message = e.what();
     }
-
-#define IN_RESP_DATA            0
-#define IN_RESP_ERROR_MESSAGE   1
-    response.resize(2);
-    response[IN_RESP_DATA]          = data;
-    response[IN_RESP_ERROR_MESSAGE] = error_message;
-
-    return 0;
 }
 
-//! service callback request output process data
+//! svc_out
 /*!
- * \param request service request data
- * \parma response service response data
- * \return success
+ * \param[in]   req     Service request data.
+ * \param[out]  resp    Service response data.
  */
-int process_data_inspection::handler::service_out(const robotkernel::service_arglist_t& request, 
-        robotkernel::service_arglist_t& response) {
-    pd_t data_out;
-
-    // default response values
-    std::vector<rk_type> data;
-    string error_message;
-
+void process_data_inspection::handler::svc_out(const struct svc_req_out& req, struct svc_resp_out& resp) {
     log(verbose, "pdout %s:%s requested\n", _instance->owner.c_str(), 
             _instance->device_name.c_str());
 
     try {
-        _instance->get_pdout(data_out);
-        data.assign(data_out.begin(), data_out.end());
+        _instance->get_pdout(resp.data);
     } catch (std::exception& e) {
-        error_message = e.what();
+        resp.error_message = e.what();
     }
-
-#define OUT_RESP_DATA           0
-#define OUT_RESP_ERROR_MESSAGE  1
-    response.resize(2);
-    response[OUT_RESP_DATA]          = data;
-    response[OUT_RESP_ERROR_MESSAGE] = error_message;
-
-    return 0;
 }
 
 

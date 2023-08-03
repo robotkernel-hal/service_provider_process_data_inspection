@@ -1,4 +1,4 @@
-name: service_provider_process_data_inspection/in
+name: service_provider/process_data_inspection/out
 response:
 - vector/uint8_t: data
 - string: error_message

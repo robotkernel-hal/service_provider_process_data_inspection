@@ -16,8 +16,8 @@ libservice_provider_process_data_inspection_la_LDFLAGS  = -Wall -release $(PACKA
 
 VPATH = $(srcdir):$(top_srcdir)/share/service_definitions
 
-SERVICE_DEFINITIONS = robotkernel/service_provider_process_data_inspection/in \
-					  robotkernel/service_provider_process_data_inspection/out
+SERVICE_DEFINITIONS = service_provider/process_data_inspection/in \
+					  service_provider/process_data_inspection/out
 
 $(top_builddir)/src/main/cpp/service_definitions.h: Makefile $(SERVICE_DEFINITIONS)
 	install -d $(top_builddir)/src/main/cpp/include/robotkernel
