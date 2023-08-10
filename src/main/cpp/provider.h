@@ -25,23 +25,19 @@
 #ifndef __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H__
 #define __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H__
 
+// Robotkernel includes
 #include "robotkernel/service_provider_base.h"
 #include "robotkernel/service_provider_intf.h"
 #include "robotkernel/service.h"
 #include "robotkernel/kernel.h"
 #include "robotkernel/log_base.h"
 
+// Service provider includes
 #include "service_provider/process_data_inspection/base.h"
+#include "service_definitions.h"
 
 namespace service_provider {
-#ifdef EMACS
-}
-#endif
-
 namespace process_data_inspection {
-#ifdef EMACS
-}
-#endif
 
 // forward declaration
 class handler;
@@ -60,7 +56,9 @@ class provider :
 };
 
 class handler : 
-    public robotkernel::log_base 
+    public robotkernel::log_base,
+    public svc_base_in,
+    public svc_base_out
 {
     public:
         typedef std::shared_ptr<process_data_inspection::base> base_t;
@@ -70,37 +68,24 @@ class handler :
         handler(const robotkernel::sp_service_interface_t& req);
 
         //! handler destruction
-        ~handler();
+        ~handler() {}
 
-        //! service callback request input process data
+        //! svc_in
         /*!
-         * \param request service request data
-         * \parma response service response data
-         * \return success
+         * \param[in]   req     Service request data.
+         * \param[out]  resp    Service response data.
          */
-        int service_in(const robotkernel::service_arglist_t& request, 
-                robotkernel::service_arglist_t& response);
-        static const std::string service_definition_in;
+        virtual void svc_in(const struct svc_req_in& req, struct svc_resp_in& resp);
 
-        //! service callback request output process data
+        //! svc_out
         /*!
-         * \param request service request data
-         * \parma response service response data
-         * \return success
+         * \param[in]   req     Service request data.
+         * \param[out]  resp    Service response data.
          */
-        int service_out(const robotkernel::service_arglist_t& request, 
-                robotkernel::service_arglist_t& response);
-        static const std::string service_definition_out;
+        virtual void svc_out(const struct svc_req_out& req, struct svc_resp_out& resp);
 };
 
-#ifdef EMACS
-{
-#endif
 }; // namespace process data inspection
-
-#ifdef EMACS
-{
-#endif
 }; // namespace interface
 
 #endif // __INTERFACE_PROCESS_DATA_INSPECTION_H__
