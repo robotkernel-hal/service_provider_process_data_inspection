@@ -2,17 +2,18 @@ import os
 from conan import ConanFile, conan_version
 from conan.tools.scm import Version
 
+
 class lnrk_interface_python(ConanFile):
     name = "service_provider_process_data_inspection_rkgui"
     description = "python rkgui binding to service_provider_process_data_inspection."
     author = "Robert Burger <robert.burgert@dlr.de>"
     license = "GPLv3"
-    
+
     url = f"https://rmc-github.robotic.dlr.de/robotkernel/service_provider_process_data_inspection"
     settings = "os"
-    pure_python_folder = os.path.join("bindings","python")
+    pure_python_folder = os.path.join("bindings", "python")
     exports_sources = os.path.join(pure_python_folder, "*")
-    
+
     def requirements(self):
         self.requires(f"service_provider_process_data_inspection_ln_msgdef/{self.version}@{self.user}/{self.channel}")
 
@@ -27,4 +28,3 @@ class lnrk_interface_python(ConanFile):
             self.env_info.PYTHONPATH.append(pypath2)
         self.runenv_info.append_path("PYTHONPATH", pypath1)
         self.runenv_info.append_path("PYTHONPATH", pypath2)
-    
