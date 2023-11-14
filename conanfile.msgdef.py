@@ -3,6 +3,7 @@ from conan import ConanFile, conan_version
 from conan.tools.files import copy, chdir
 from conan.tools.scm import Version
 
+
 class MainProject(ConanFile):
     name = "service_provider_process_data_inspection_ln_msgdef"
     url = "https://rmc-github.robotic.dlr.de/robotkernel/service_provider_process_data_inspection"
@@ -10,21 +11,25 @@ class MainProject(ConanFile):
     license = "GPLv3"
     description = "service_provider_process_data_inspection ln message definitions"
     settings = None
-    exports_sources = [ "share/*", ]
+    exports_sources = [
+        "share/*",
+    ]
 
     tool_requires = ["robotkernel_ln_helper/[*]@robotkernel/stable"]
     generators = "VirtualBuildEnv"
 
     def package(self):
-        svc_def_dir = 'share/service_definitions'
-        ln_msg_dir  = 'share/ln/message_definitions'
+        svc_def_dir = "share/service_definitions"
+        ln_msg_dir = "share/ln/message_definitions"
 
         svc_def_files = []
         with chdir(self, os.path.join(self.build_folder, svc_def_dir)):
-                for (dirpath, dirnames, filenames) in os.walk('.'): 
-                    svc_def_files.extend(os.path.join(dirpath, filename) for filename in filenames)
+            for dirpath, dirnames, filenames in os.walk("."):
+                svc_def_files.extend(os.path.join(dirpath, filename) for filename in filenames)
 
-        self.run("service_generate --indir %s --outdir %s %s" % (svc_def_dir, ln_msg_dir, " ".join(svc_def_files)), env="conanbuild")
+        self.run(
+            "service_generate --indir %s --outdir %s %s" % (svc_def_dir, ln_msg_dir, " ".join(svc_def_files)), env="conanbuild"
+        )
 
         copy(self, "share/ln/message_definitions/*", self.build_folder, self.package_folder)
 
@@ -34,4 +39,3 @@ class MainProject(ConanFile):
             self.env_info.LN_MESSAGE_DEFINITION_DIRS.append(msgdef_dir)
         self.runenv_info.append_path("LN_MESSAGE_DEFINITION_DIRS", msgdef_dir)
         self.buildenv_info.append_path("LN_MESSAGE_DEFINITION_DIRS", msgdef_dir)
- 
