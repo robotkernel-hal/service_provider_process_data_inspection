@@ -15,11 +15,9 @@ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AX_CHECK_COMPILE_FLAG([-std=gnu11], [CFLAGS+=" -std=gnu11"], [AC_PROG_CC_C99])
 AC_PROG_CXX
 AX_CXX_COMPILE_STDCXX_11([ext], [mandatory])
-AC_PROG_AWK
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 AC_PROG_LN_S
-AC_PROG_MAKE_SET
 m4_ifdef([PKG_PROG_PKG_CONFIG], [PKG_PROG_PKG_CONFIG])
 m4_ifdef([PKG_INSTALLDIR], [PKG_INSTALLDIR], [pkgconfigdir='${libdir}/pkgconfig' AC_SUBST([pkgconfigdir])])
 
@@ -33,11 +31,9 @@ AC_CHECK_HEADERS([stdlib.h string.h])
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-AC_CHECK_FUNCS([strdup])
-
-# Checks for library functions.
 AC_CHECK_LIB(dl, dlopen)
 
 AC_CONFIG_FILES([Makefile src/main/cpp/Makefile service_provider_process_data_inspection.pc])
 
 AC_OUTPUT
+
