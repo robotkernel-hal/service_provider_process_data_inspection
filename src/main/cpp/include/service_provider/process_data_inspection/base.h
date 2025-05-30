@@ -22,21 +22,14 @@
  * along with robotkernel.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H__
-#define __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H__
+#ifndef SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H
+#define SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H
 
 #include <list>
 #include "robotkernel/service_interface.h"
 
 namespace service_provider {
-#ifdef EMACS
-}
-#endif
-
 namespace process_data_inspection {
-#ifdef EMACS
-}
-#endif
 
 //! process data definition
 typedef std::vector<uint8_t> pd_t;
@@ -67,15 +60,8 @@ class base :
 
 inline base::~base() { }
 
-#ifdef EMACS 
-{
-#endif
 }; // namespace process_data_inspection
-
-#ifdef EMACS 
-{
-#endif
 }; // namespace service_provider
 
-#endif // __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H__
+#endif // SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H
 

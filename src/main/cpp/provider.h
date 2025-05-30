@@ -22,8 +22,8 @@
  * along with robotkernel.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H__
-#define __SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H__
+#ifndef SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H
+#define SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H
 
 // Robotkernel includes
 #include "robotkernel/service_provider_base.h"
@@ -88,5 +88,5 @@ class handler :
 }; // namespace process data inspection
 }; // namespace interface
 
-#endif // __INTERFACE_PROCESS_DATA_INSPECTION_H__
+#endif // SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H
 
