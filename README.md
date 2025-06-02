@@ -8,4 +8,35 @@ To use this service provider it just has to be loaded by robotkernel in the `ser
 
 ## Implementation specific
 
+Either use conan to add the needed include and library pathes to you project or use pkg-config with the 
+provided pkc-file.
+
+First thing to do is to include the base header:
+
+```c
+#include "service_provider/process_data_inspection/base.h"
+
+```
+
+After this you have to dervive a class from the `service_provider::process_data_inspection::base` class 
+and implement the corresponding process data inspection functions.
+
+```c
+class my_class : public service_provider::process_data_inspection::base {
+    public:
+        my_class() { /* init things here */ }
+
+        //! return input process data (measurements)
+        /*!
+         * \param pd return input process data
+         */
+        virtual void get_pdin(pd_t& pd) { /* fill pd struct here */ }
+
+        //! return output process data (commands)
+        /*!
+         * \param pd return output process data
+         */
+        virtual void get_pdout(pd_t& pd) { /* fill pd struct here */ }
+};
+```
 
