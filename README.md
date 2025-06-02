@@ -13,7 +13,7 @@ provided pkc-file.
 
 First thing to do is to include the base header:
 
-```c
+```c++
 #include "service_provider/process_data_inspection/base.h"
 
 ```
@@ -21,7 +21,7 @@ First thing to do is to include the base header:
 After this you have to dervive a class from the `service_provider::process_data_inspection::base` class 
 and implement the corresponding process data inspection functions.
 
-```c
+```c++
 class my_class : public service_provider::process_data_inspection::base {
     public:
         my_class() { /* init things here */ }
