@@ -57,8 +57,7 @@ class provider :
 
 class handler : 
     public robotkernel::log_base,
-    public svc_base_in,
-    public svc_base_out
+    public svc_base_pd_inspect
 {
     public:
         typedef std::shared_ptr<process_data_inspection::base> base_t;
@@ -70,19 +69,12 @@ class handler :
         //! handler destruction
         ~handler() {}
 
-        //! svc_in
+        //! svc_inspect
         /*!
          * \param[in]   req     Service request data.
          * \param[out]  resp    Service response data.
          */
-        virtual void svc_in(const struct svc_req_in& req, struct svc_resp_in& resp);
-
-        //! svc_out
-        /*!
-         * \param[in]   req     Service request data.
-         * \param[out]  resp    Service response data.
-         */
-        virtual void svc_out(const struct svc_req_out& req, struct svc_resp_out& resp);
+        virtual void svc_pd_inspect(const struct svc_req_pd_inspect& req, struct svc_resp_pd_inspect& resp);
 };
 
 }; // namespace process data inspection

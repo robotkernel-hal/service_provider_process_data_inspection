@@ -27,6 +27,7 @@
 
 #include <list>
 #include "robotkernel/service_interface.h"
+#include "robotkernel/process_data.h"
 
 namespace service_provider {
 namespace process_data_inspection {
@@ -39,24 +40,46 @@ class base :
 {
     public:
         //! construction
-        base(std::string owner, std::string service_prefix)
+        base(const std::string& owner, const std::string& service_prefix)
             : robotkernel::service_interface(owner, service_prefix + ".process_data_inspection") {};
 
         //! destruction
         virtual ~base() = 0;
 
-        //! return input process data (measurements)
+        //! return process data
         /*!
-         * \param pd return input process data
+         * \param pd return process data
          */
-        virtual void get_pdin(pd_t& pd) = 0;
-
-        //! return output process data (commands)
-        /*!
-         * \param pd return output process data
-         */
-        virtual void get_pdout(pd_t& pd) = 0;
+        virtual void pd_inspect(pd_t& pd) = 0;
 };
+
+class pd_inspection : 
+    public base 
+{
+    private:
+        robotkernel::sp_process_data_t pd_dev;
+
+    public:
+        //! construction
+        pd_inspection(const std::string& owner, const std::string& service_prefix,
+                robotkernel::sp_process_data_t pd_dev)
+            : base(owner, service_prefix), pd_dev(pd_dev) {}
+        
+        //! return process data
+        /*!
+         * \param pd return process data
+         */
+        virtual void pd_inspect(pd_t& pd) { 
+            if (pd_dev) {
+                pd.resize(pd_dev->length);
+                memcpy(&pd[0], pd_dev->peek(), pd_dev->length);
+            } else {
+                pd.resize(0);
+            }
+        }
+};
+
+typedef std::shared_ptr<service_provider::process_data_inspection::pd_inspection> sp_pd_inspection_t;
 
 inline base::~base() { }
 

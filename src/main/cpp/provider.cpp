@@ -49,8 +49,7 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_interfac
     if (!_instance)
         throw str_exception("wrong base class");
 
-    add_svc_in(_instance->owner, _instance->device_name + ".in");
-    add_svc_out(_instance->owner, _instance->device_name + ".out");
+    add_svc_pd_inspect(_instance->owner, _instance->device_name + ".pd_inspect");
 }
 
 //! svc_in
@@ -58,31 +57,14 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_interfac
  * \param[in]   req     Service request data.
  * \param[out]  resp    Service response data.
  */
-void process_data_inspection::handler::svc_in(const struct svc_req_in& req, struct svc_resp_in& resp) {
+void process_data_inspection::handler::svc_pd_inspect(const struct svc_req_pd_inspect& req, struct svc_resp_pd_inspect& resp) {
     log(verbose, "pdin %s:%s requested\n", _instance->owner.c_str(), 
             _instance->device_name.c_str());
 
     try {
-        _instance->get_pdin(resp.data);
+        _instance->pd_inspect(resp.data);
     } catch (std::exception& e) {
         resp.error_message = e.what();
     }
 }
-
-//! svc_out
-/*!
- * \param[in]   req     Service request data.
- * \param[out]  resp    Service response data.
- */
-void process_data_inspection::handler::svc_out(const struct svc_req_out& req, struct svc_resp_out& resp) {
-    log(verbose, "pdout %s:%s requested\n", _instance->owner.c_str(), 
-            _instance->device_name.c_str());
-
-    try {
-        _instance->get_pdout(resp.data);
-    } catch (std::exception& e) {
-        resp.error_message = e.what();
-    }
-}
-
 
