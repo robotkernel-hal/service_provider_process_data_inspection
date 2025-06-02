@@ -9,7 +9,7 @@ To use this service provider it just has to be loaded by robotkernel in the `ser
 ## Implementation specific
 
 Either use conan to add the needed include and library pathes to you project or use pkg-config with the 
-provided pkc-file.
+provided pc-file.
 
 First thing to do is to include the base header:
 
