@@ -6,6 +6,34 @@ This service provider creates services to inspect process data content via async
 
 To use this service provider it just has to be loaded by robotkernel in the `service_providers` section.
 
+```yaml
+service_providers:
+- name: mi_sp
+  so_file: libservice_provider_process_data_inspection.so
+```
+
+## Services
+
+**in**
+:   Read input data memory 
+
+```yaml
+name: service_provider/process_data_inspection/in
+response:
+- vector/uint8_t: data
+- string: error_message
+```
+
+**out**
+:   Read outpout data memory
+
+```yaml
+name: service_provider/process_data_inspection/out
+response:
+- vector/uint8_t: data
+- string: error_message
+```
+
 ## Implementation specific
 
 Either use conan to add the needed include and library pathes to you project or use pkg-config with the 
