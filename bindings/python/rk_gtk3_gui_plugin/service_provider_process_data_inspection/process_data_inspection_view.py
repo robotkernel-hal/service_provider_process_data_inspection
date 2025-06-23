@@ -51,8 +51,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
         container.pack_start(self.process_data_inspection_box, True, True, 0)
 
         fd = helpers.gui_utils.get_monospace_font_description()
-        self.in_tv.modify_font(fd)
-        self.out_tv.modify_font(fd)
+        self.inspection_tv.modify_font(fd)
 
         self.timer = 0
         self.timer_id = None
@@ -78,8 +77,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
             return False
         dev = self.devices[self.current_device]
         dev.update()
-        self.show_data("in_tv", dev.in_data)
-        self.show_data("out_tv", dev.out_data)
+        self.show_data("inspection_tv", dev.inspection_data)
 
     def generate_hex_listing(self, data, line_len=16):
         text = ["%d bytes:" % len(data)]

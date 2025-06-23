@@ -27,7 +27,6 @@
 #include "provider.h"
 #include "service_definitions.h"
 
-#include "robotkernel/kernel.h"
 #include "robotkernel/helpers.h"
 #include "robotkernel/exceptions.h"
 

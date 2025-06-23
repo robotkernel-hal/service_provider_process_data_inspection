@@ -23,12 +23,9 @@ import helpers
 class process_data_inspection_device(helpers.svc_wrapper):
     def __init__(self, clnt, prefix):
         helpers.svc_wrapper.__init__(self, clnt, prefix)
-        self.in_data = []
-        self.out_data = []
+        self.inspection_data = []
 
     def update(self):
-        self.svc_in.call()
-        self.in_data = self.svc_in.resp.data
+        self.svc_pd_inspection.call()
+        self.inspection_data = self.svc_pd_inspection.resp.data
 
-        self.svc_out.call()
-        self.out_data = self.svc_out.resp.data
