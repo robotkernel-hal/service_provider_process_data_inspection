@@ -29,8 +29,7 @@
 #include "robotkernel/service_interface.h"
 #include "robotkernel/process_data.h"
 
-namespace service_provider {
-namespace process_data_inspection {
+namespace service_provider_process_data_inspection {
 
 //! process data definition
 typedef std::vector<uint8_t> pd_t;
@@ -79,12 +78,11 @@ class pd_inspection :
         }
 };
 
-typedef std::shared_ptr<service_provider::process_data_inspection::pd_inspection> sp_pd_inspection_t;
+typedef std::shared_ptr<service_provider_process_data_inspection::pd_inspection> sp_pd_inspection_t;
 
 inline base::~base() { }
 
-}; // namespace process_data_inspection
-}; // namespace service_provider
+}; // namespace service_provider_process_data_inspection
 
 #endif // SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__BASE__H
 

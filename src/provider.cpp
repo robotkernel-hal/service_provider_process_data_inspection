@@ -30,20 +30,17 @@
 #include "robotkernel/helpers.h"
 #include "robotkernel/exceptions.h"
 
-SERVICE_PROVIDER_DEF(process_data_inspection, 
-        service_provider::process_data_inspection::provider);
+SERVICE_PROVIDER_DEF(process_data_inspection, service_provider_process_data_inspection::provider);
 
 using namespace std;
-using namespace std::placeholders;
-
 using namespace robotkernel;
-using namespace service_provider;
+using namespace service_provider_process_data_inspection;
 
 //! handler construction
-process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
+handler::handler(const robotkernel::sp_service_interface_t& req) 
     : log_base(req->owner, "process_data_inspection", req->device_name) 
 {
-    _instance = std::dynamic_pointer_cast<process_data_inspection::base>(req);
+    _instance = std::dynamic_pointer_cast<base>(req);
     if (!_instance)
         throw runtime_error(string("wrong base class"));
 
@@ -55,7 +52,7 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_interfac
  * \param[in]   req     Service request data.
  * \param[out]  resp    Service response data.
  */
-void process_data_inspection::handler::svc_pd_inspect(const struct svc_req_pd_inspect& req, struct svc_resp_pd_inspect& resp) {
+void handler::svc_pd_inspect(const struct svc_req_pd_inspect& req, struct svc_resp_pd_inspect& resp) {
     log(verbose, "pdin %s:%s requested\n", _instance->owner.c_str(), 
             _instance->device_name.c_str());
 

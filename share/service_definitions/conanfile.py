@@ -23,7 +23,7 @@ class MainProject(ConanFile):
 
         svc_def_files = []
         with chdir(self, self.build_folder):
-            for dirpath, dirnames, filenames in os.walk("service_provider/process_data_inspection"):
+            for dirpath, dirnames, filenames in os.walk("service_provider_process_data_inspection"):
                 svc_def_files.extend(os.path.join(dirpath, filename) for filename in filenames)
 
         self.run(

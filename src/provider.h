@@ -31,12 +31,13 @@
 #include "robotkernel/robotkernel.h"
 #include "robotkernel/log_base.h"
 
-// Service provider includes
-#include "service_provider/process_data_inspection/base.h"
+// Service provider public includes
+#include "service_provider_process_data_inspection/base.h"
+
+// Service provider private includes
 #include "service_definitions.h"
 
-namespace service_provider {
-namespace process_data_inspection {
+namespace service_provider_process_data_inspection {
 
 // forward declaration
 class handler;
@@ -59,7 +60,7 @@ class handler :
     public svc_base_pd_inspect
 {
     public:
-        typedef std::shared_ptr<process_data_inspection::base> base_t;
+        typedef std::shared_ptr<service_provider_process_data_inspection::base> base_t;
         base_t _instance;
 
         //! handler construction
@@ -76,8 +77,7 @@ class handler :
         virtual void svc_pd_inspect(const struct svc_req_pd_inspect& req, struct svc_resp_pd_inspect& resp);
 };
 
-}; // namespace process data inspection
-}; // namespace interface
+}; // namespace service_provider_process_data_inspection
 
 #endif // SERVICE_PROVIDER__PROCESS_DATA_INSPECTION__PROVIDER_H
 

@@ -33,7 +33,7 @@ AC_TYPE_SIZE_T
 # Checks for library functions.
 AC_CHECK_LIB(dl, dlopen)
 
-AC_CONFIG_FILES([Makefile src/main/cpp/Makefile service_provider_process_data_inspection.pc])
+AC_CONFIG_FILES([Makefile src/Makefile service_provider_process_data_inspection.pc])
 
 AC_OUTPUT
 
