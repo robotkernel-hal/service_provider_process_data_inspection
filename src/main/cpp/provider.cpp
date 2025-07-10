@@ -38,7 +38,6 @@ using namespace std::placeholders;
 
 using namespace robotkernel;
 using namespace service_provider;
-using namespace string_util;
 
 //! handler construction
 process_data_inspection::handler::handler(const robotkernel::sp_service_interface_t& req) 
@@ -46,7 +45,7 @@ process_data_inspection::handler::handler(const robotkernel::sp_service_interfac
 {
     _instance = std::dynamic_pointer_cast<process_data_inspection::base>(req);
     if (!_instance)
-        throw str_exception("wrong base class");
+        throw runtime_error(string("wrong base class"));
 
     add_svc_pd_inspect(_instance->owner, _instance->device_name + ".pd_inspect");
 }
