@@ -61,7 +61,7 @@ jobs:
       - name: Collect .deb artifact
         run: |
           mkdir -p artifacts/${{ matrix.os }}/${{ matrix.version }}
-          mv ../robotkernel*.deb artifacts/${{ matrix.os }}/${{ matrix.version }}
+          mv ../service-provider-process-data-inspection*.deb artifacts/${{ matrix.os }}/${{ matrix.version }}
       
       - name: Set sanitized image name
         id: sanitize
@@ -74,7 +74,7 @@ jobs:
       - name: Upload .deb package
         uses: actions/upload-artifact@v4
         with:
-          name: robotkernel-${{ steps.sanitize.outputs.sanitized_image }}.deb
+          name: service-provider-process-data-inspection-${{ steps.sanitize.outputs.sanitized_image }}.deb
           path: artifacts/${{ matrix.os }}/${{ matrix.version }}/*.deb
       
       - name: Upload to Cloudsmith (${{ matrix.os }}/${{ matrix.version }})
@@ -83,8 +83,8 @@ jobs:
         shell: bash
         run: |
           VERSION=$(dpkg-parsechangelog | sed -n 's/^Version: //p')
-          FILENAME="artifacts/${{ matrix.os }}/${{ matrix.version }}/robotkernel_${VERSION}_amd64.deb"
-          FILENAME_DEV="artifacts/${{ matrix.os }}/${{ matrix.version }}/robotkernel-dev_${VERSION}_amd64.deb"
+          FILENAME="artifacts/${{ matrix.os }}/${{ matrix.version }}/service-provider-process-data-inspection_${VERSION}_amd64.deb"
+          FILENAME_DEV="artifacts/${{ matrix.os }}/${{ matrix.version }}/service-provider-process-data-inspection-dev_${VERSION}_amd64.deb"
         
           python3 -m venv cloudsmith
           cd cloudsmith
