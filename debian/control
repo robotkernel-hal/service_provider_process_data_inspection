@@ -16,7 +16,7 @@ Multi-Arch: same
 Depends: robotkernel-dev (= ${binary:Version}), ${misc:Depends}
 Description: TODO
 
-Package: service_provider_process_data_inspection
+Package: service-provider-process-data-inspection
 Architecture: any
 Multi-Arch: same
 Depends: robotkernel ${shlibs:Depends}, ${misc:Depends}
