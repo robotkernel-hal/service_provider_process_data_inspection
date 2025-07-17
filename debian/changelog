@@ -1,553 +1,244 @@
-libosal (0.1.0~pre1) unstable; urgency=low
+service-provider-process-data-inspection (6.0.0~pre1) unstable; urgency=low
 
-  * Merge branch 'master' of github.com:robert-burger/libosal
-  * Merge pull request #6 from marcfir/master
-  * Merge commit '0.0.6-rev0-2-g98fb40b'
-  * fix: out-of-src-tree build
-  * fix: posix sem_timedwait -> converting timeout to CLOCK_REALTIME based timeout if needed
-  * use target_compile_definitions
-  * fix: add HAVE_CONFIG_H to cmake
-  * Merge pull request #13 from common/feat/stm32-merge
-  * Merge branch 'feat/stm32' into feat/stm32-merge
-  * changed ifndef and define from posix to stm32
-  * add: stm32 libosal files
-  * add: initial stm32 mutex
-  * fix: binary semaphore has uninitialized internal mutex attributes in posix case
-  * deleted crit sec in osal_puts
-  * deleted crit sec in sem_trywait
-  * changed buf size in osal_printf and added sizeof(buf)
-  * added CRIT_SECs around HAL_UART_TX
-  * use huart1 instead of huart3
-  * Merge pull request #1 from burger-r/stm32-changes
-  * Update timer.c, fix stm32hxx.h
-  * fix: changes for stm32 target
-  * added volatile int
-  * added volatile int
-  * added memset 0
-  * added HAL_UART_Transmit and ATOMIC_BLOCK
-  * removed outcommented lines; added timer logic
-  * removed outcommented lines; added semaphore logic(inc/dec)
-  * restructure
-  * added counter to sem
-  * added TIM2 and 4 for time calculation in osal_timer_gettime
-  * initialized timespec ts={0,0}
-  * added stm32_ret
-  * added me to authors; added date
-  * deleted function pthreads for stm32 functions
-  * added missing stm32 files; made #ifdef for config and for LIBOSAL_BUILD_STM32
-  * changed ifndef and define from posix to stm32
-  * changed ifndef and define from posix to stm32
-  * add: stm32 libosal files
-  * add: initial stm32 mutex
+  * Prep: 6.0.0
 
- -- Robert Burger <robert.burger@dlr.de>  Thu, 3 Jul 2025 06:51:06 +0200
+ -- Burger, Robert <robert.burger@dlr.de>  Wed, 23 Oct 2024 09:39:13 +0200
 
-libosal (0.0.6) unstable; urgency=low
+service-provider-process-data-inspection (5.1.5) unstable; urgency=low
 
-  * prep: 0.0.6 release
-  * fix: extendend tracing to also return min_val and max_val relative
-  * fix: extendend tracing to also return min_val and max_val
-  * add: extenden tracing to also return min_val and max_val
-  * fix: more error prints in posix task wrapper
-  * fix: printing errors in posix task wrapper
-  * fix (posix): setting priority inheritance for binary_semaphore mutex
-  * fix: use infinite timeout for lock
-  * fix: init value of semaphore was ignored
-  * fix: pikeos -> skipping osal.c, 4.2 does not need this
-  * fix: pikeos compilation
-  * Merge branch 'master' of github.com:robert-burger/libosal
-  * fix: pikeos -> re-sleep when p4_sleep returned P4_E_CANCEL
-  * fix: starting task priority at 1 and not with 0
-  * Merge branch 'master' of github.com:robert-burger/libosal
-  * Merge pull request #5 from marcfir/feat/timerconfig
-  * feat: add osal_timer_get_clock_source() and replace all LIBOSAL_CLOCK constants
-  * feat: make timer clock source configurable
-  * Merge pull request #4 from marcfir/master
-  * doc: clean markdown
-  * feat(CMake): Configure fpic
+  * Merge pull request #7 from robotkernel/pkg-clear_include_dirs
+  * pkg: clear includedirs default
 
- -- Robert Burger <robert.burger@dlr.de>  Mon, 24 Mar 2025 08:28:42 +0100
+ -- Burger, Robert <robert.burger@dlr.de>  Wed, 23 Oct 2024 09:39:13 +0200
 
-libosal (0.0.5) unstable; urgency=low
+service-provider-process-data-inspection (5.1.4) unstable; urgency=low
 
-  * update: debian changelog for 0.0.5
-  * Merge branch 'master' of rmc-github.robotic.dlr.de:common/libosal
-  * bump: 0.0.5
-  * fix: debian rules
-  * add: git changelog gen script
+  * Merge pull request #5 from robotkernel/feat/conan2
+  * feat: conan2
 
- -- Robert Burger <robert.burger@dlr.de>  Sat, 30 Nov 2024 09:45:25 +0100
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Tue, 30 Jan 2024 15:13:43 +0100
 
-libosal (0.0.4-deb0) unstable; urgency=low
+service-provider-process-data-inspection (5.1.3) unstable; urgency=low
 
-  * 0.0.4 debian release
-  * fix: URL in pkg-config
-  * fix: debian rules
+  * Merge pull request #4 from robotkernel/feat/conan2_syntax
+  * chore(rmc build): use build profiles
+  * chore: black format
+  * feat: port rkgui to conan2 syntax
+  * chore: black format
+  * feat: port to conan2 syntax
 
- -- Robert Burger <robert.burger@dlr.de>  Mon, 2 Dec 2024 06:42:14 +0100
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Fri, 17 Nov 2023 12:46:43 +0100
 
-libosal (0.0.4) unstable; urgency=low
+service-provider-process-data-inspection (5.1.2) unstable; urgency=low
 
-  * Merge branch 'master' of rmc-github.robotic.dlr.de:common/libosal
-  * fix: AC_INIT on one line
-  * debian: changelog update
-  * debian: dev package install artifacts
-  * debian: removed qilt format
-  * debian: version from git tag
-  * add: git to debian changelog script
-  * fix: typo in configure test for win32
-  * add: debian build
-  * Merge pull request #7 from nix-jo/fix/posix-messagequeue
-  * Merge branch 'master' into fix/posix-messagequeue
-  * Merge branch 'master' of github.com:robert-burger/libosal
-  * Merge pull request #9 from common/feat/posix-tests
-  * fix: pikeos build
-  * Merge branch 'feat/posix-tests' of rmc-github.robotic.dlr.de:common/libosal into feat/posix-tests
-  * move check to coverage case
-  * Merge branch 'master' into feat/posix-tests
-  * doc: complete instruction
-  * chore: add explicit header includes to some tests
-  * chore: add coverage output to build output
-  * test/doc: improve description
-  * Doc: Add note on tests for POSIX.
-  * chore: add conan option to include coverage analysis in html format
-  * doc: message queue tests / formatting
-  * doc: reST format fixes
-  * doc: links
-  * doc: Test overview
-  * update tests overview
-  * tests: add description of tests and overview
-  * doc: tests
-  * test/doc: document counting semaphore
-  * doc: tests (WIP)
-  * test: remove dead  code
-  * doc: formatting of test description
-  * doc: start documentation of tests
-  * test: factor out test
-  * test: factor out test
-  * test: factor out test
-  * test: factor out testcase
-  * test: factor out testcase
-  * factor out test
-  * doc: improve wording
-  * fix: typos
-  * style: remove dead code
-  * style: tidy up code, reactivate assertions
-  * tests: check return value
-  * test: omit duplicated test
-  * test: task suspend / resume
-  * chore: add unit tests to conanfile
-  * test: exclude flaky test from automatic inclusion
-  * test: add setting task name
-  * style: remove dead code
-  * test: priority ceiling protocol
-  * test: match code to documentation
-  * doc: explain test
-  * test: add verbose flag to priority inversion test
-  * test: fix priority inheritance test
-  * test: WIP priority inverston test
-  * test: priority inversion
-  * add check for recursive mutex
-  * Merge branch 'feat/posix-tests' of rmc-github.robotic.dlr.de:nix-jo/libosal into feat/posix-tests
-  * test: recursive attribute
-  * test: dead mutex with mutex_trylock
-  * test: priority inheritance parameters
-  * add owner-dead test
-  * test: add deadlock test for error-checking mutex
-  * add tests with invalid mmap parameters
-  * test against erronoueous paremeters
-  * test: exercise different flags
-  * re-apply revert
-  * Merge branch 'fix/posix-semaphores' into feat/posix-tests
-  * revert change to return value check of binary semaphore
-  * move call to before free of data
-  * test: disable brittle test
-  * ignore more errors in gcovr parsing
-  * fix dependency path
-  * Update mq.h
-  * Update mq.h
-  * doc: comment on unreachable code
-  * fix: termination condition
-  * add missing attribute
-  * doc: fix typo
-  * fix: retrieve result from errno
-  * fix: no-wait case
-  * doc: add missing parameter description
-  * Merge remote-tracking branch 'origin/offline-tests' into feat/posix-tests
-  * add timedreceive tests
-  * fix: non-terminating loop condition in case of parameter errors
-  * separate message queue interrupt tests inti own process
-  * test: interrupted mq_send
-  * test: add utility function for timers
-  * increase coverage for tests
-  * fix: typo
-  * fix: termination condition for timedsend
-  * fix non-compiling test
-  * test: size limit on message queue
-  * test: against overly long mq name
-  * test: for non-existing message queue name without O_CREAT
-  * test: mq_open for invalid parameter
-  * test: test for exclusive access
-  * fix: add missing O_EXCL flag
-  * test for correct failure due to lack of permission
-  * test: check with read and write flags
-  * chore: revert makefile to use global recipe
-  * test: test of trace functions
-  * test: add osal_mutex_trylock()
-  * test: osal_busy_wait()
-  * test: task attributes, suspend, resume
-  * test: getting / setting task attributes
-  * test: canceling thread
-  * test: use osal_task_delete()
-  * test: delete previously created shared memory messages
-  * test: small test of shmio
-  * test: improve coverage for postic/io.c
-  * test: add rudimentary IO test
-  * style: make naming clearer
-  * fix: missing return value / lacking initialization
-  * fix: simplify and fix flaky test
-  * test: make thread start and termination less fussy
-  * fix: time arithmetic
-  * fix: correct subtraction
-  * style: make waiting for termination more robust
-  * fix: set correct file mode bits
-  * test: add test with random data for shared memory
-  * doc: add to test description
-  * test: tweak finicky tests
-  * test: add coverage analysis with HTML output
-  * test: temporarily disable hanging test
-  * chore: exclude generated coverage files
-  * test: add coverage report
-  * test: disable condvar non-broadcast test
-  * test: add test for message queue with timeout
-  * test: add check for messagequeue
-  * test/fix: message maximum number argument
-  * WIP: test messagequeue
-  * test: add test for task creation / destruction
-  * test: add spinlock test, identical to mutex
-  * test: add test for non-broadcast condition
-  * test: add test for condvar_timedwait
-  * style: tweak source formatting style
-  * chore: add auto-formatting on buffer save
-  * style: format source code (using clang-format)
-  * test: add test for condition variable
-  * add: missing shmtest tool
-  * fix: pikeos build
-  * fix: flags for task start on pikeos
-  * tests: tidy up makefile
-  * test: add test for binary semaphore
-  * fix: match return value to counting sema
-  * fix: compile errors on OSL144
-  * WIP: Tests for binary semaphore
-  * fix: fetch return code from errno
-  * fix: use errno for error code
-  * test: add environment switch to enable checks for latency
-  * make test for osal_semaphore_trywait pass
-  * test osal_semaphore_trywait
-  * test: fix test for timedwait, had a too difficult end condition
-  * update test plan
-  * doc/fix: add description of deadline parameter
-  * test: semaphore / timedwait
-  * test: add test for semaphore/timedwait
-  * test: fixed bug in counting semaphore test
-  * WIP: debugging parallel semaphors
-  * test: semaphore, two threads, random wait
-  * test: adjust wait time for real-time case
-  * add verbosity flag, increase loop count
-  * doc: comment why not using assertions
-  * extend tardiness margin
-  * fix symbol clashes
-  * add basic semaphore test
-  * test: semaphore test
-  * test: split out mutex test
-  * test: increase thread number
-  * test: test mutex without wait time
-  * test: add multi-threaded mutex test
-  * test: add optional diagnostic output
-  * test: basic mutex tests
-  * test: add basic mutex test, split tests
-  * test: factor out helpers for randomization
-  * fix typos, nominally missing header
-  * add more timer checks
-  * test: test timer in multiple threads, w/ randomized input
-  * update test doc
-  * add timer test
-  * test: add test harness for googletest/posix API
-  * add copy of googletest
-  * Merge pull request #3 from marcfir/master
-  * fix(CMake): Add libm depending on platform
-  * fix(CMake): Add missing link to libm
-  * Merge pull request #2 from robert-burger/robert-burger-patch-1
-  * fix: format string on win32
-  * fix: format string on win32
-  * fix: don't use '-z noexecstack' on win32
-  * removed: attribute constructor weak for win32 builds
-  * Merge branch 'robert-burger-patch-1' of github.com:robert-burger/libosal into robert-burger-patch-1
-  * add: win32 shm header
-  * Update template_config.h.in
-  * Update cmake-multi-platform.yml
-  * Update CMakeLists.txt
-  * Update cmake-multi-platform.yml
-  * add: project.properties and read VERSION in configure.ac and CMakeLists.txt
-  * Update cmake-multi-platform.yml
-  * Create cmake-multi-platform.yml
-  * Merge pull request #1 from marcfir/master
-  * Add CMake for building
-  * Merge branch 'master' of github.com:robert-burger/libosal
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Merge pull request #5 from common/build-pikeos4
-  * build: enable pikeos4 again
-  * Update README.md
-  * change: doc
-  * removed pkg_config generator
-  * fixed: avoid regeneration of config.sub during autoreconf
-  * removed config.sub from ignores
-  * fixed debian package build
-  * updated debian changelog
+  * Merge pull request #3 from robotkernel/release/5.1.2
+  * using new service_helper classes
 
- -- Robert Burger <robert.burger@dlr.de>  Fri, 29 Nov 2024 08:02:15 +0100
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Thu, 10 Aug 2023 20:10:07 +0200
 
-libosal (0.0.3) unstable; urgency=low
+service-provider-process-data-inspection (5.1.1) unstable; urgency=low
 
-  * only build on default linux profiles for now
-  * update to conan2 syntax
-  * Update io.c
-  * add: busy_wait function to avoid sleeping for next tick
-  * fixed trace analyze func
-  * removed pikeos4.2-armv7hf-gcc5.5, it's only a link to pikeos4.2-armv7hf-gcc5
-  * fixed relative trace analyze func
-  * osal_trace_point now returns traced time
-  * switched conan branch to 'develop'
-  * fixed trace buffer
-  * fixed trace pos
-  * fixed trace pos
-  * add: trace relative analyze func
-  * add: trace get_last_time func
-  * add: osal_trace_time func
-  * add: missing io header for pikeos
-  * fix: build for pikeos4.2
-  * change conan_config_repo_branch
-  * added pikeos4.2 builds
+  * fix: expand paned view
+  * fix: python path
 
- -- Robert Burger <robert.burger@dlr.de>  Wed, 7 Feb 2024 08:27:31 +0100
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 24 Feb 2023 13:24:20 +0100
 
-libosal (0.0.2) unstable; urgency=low
+service-provider-process-data-inspection (5.1.0) unstable; urgency=low
 
-  * Merge branch 'release/0.0.2' of rmc-github.robotic.dlr.de:common/libosal into release/0.0.2
-  * removed preprocessor warning
-  * fixed not having p4_mutex_init_ext
-  * fixed comparision signed and unsigned
-  * fixed case not handled in switch
-  * fixed unused parameters
-  * updated debian control file
-  * fixed install directive for deb build
-  * fixed linked library by pkg-config file
-  * fixed logger name, duplicate with system binary name
-  * fixed uneeded assertion
-  * updated config.sub
-  * Install binaries
-  * removed install of second pkgconfig dir
-  * changed to config.sub
-  * added pkgconfigdir
-  * readded config.sub
-  * install of pkg-config file
-  * generate pkg-config file
-  * fixed printf warning not a string literal
-  * not ignoring return value of ftruncate
-  * ignoring return value of ftruncate
-  * fixed doxygen warnings
-  * Merge branch 'release/0.0.2'
-  * fixed main doc page
-  * testing doc main page
-  * more doc
-  * fixed git.config...
-  * fixed parameter doc
-  * fixed parameter doc
-  * moved 'git config user....' lines
-  * doc trace struct
-  * again more doc
-  * more doc
-  * semaphore return values, some doc
-  * condition variable return values and doc
-  * generating index.html
-  * added doxygen style
-  * rm submodule
-  * removed submodule for doxygen design
-  * creating doxygen doc by jenkins
-  * return value on osal_sleep_until
-  * working on doxygen doc
-  * added doxygen config file
-  * revert last changes, trace is portable between os'
-  * only release trace.h in posix case
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * Update README.md
-  * added timer desc
-  * Update README.md
-  * Update README.md
-  * added LGPL-V3 license
-  * added trace implementation
-  * added wip trace stuff
-  * fixed return value of sem_trywait
-  * windows fix on affinity
-  * fixed min/max prio for policy
-  * added some task helper to set priority, affinity and scheduling policy, added defines for policy
-  * fix closing bracket
-  * only set affinity if > 0, fixes #4
-  * added return values for mutex_trylock on pikeos, #1
-  * added osal_microsleep macro, #1
-  * added osal_init and osal_destroy, #1
-  * implemented osal_task_join for pikeos, #1
-  * added task state defines and added impl to get task state on pikeos
-  * added return values for osal_semaphore_timedwait on pikeos, regarding #1
-  * added return values for posix osal_semaphore_timedwait
-  * changes osal_printf comment, regarding #1
-  * Merge branch 'release/0.0.1'
-  * fixed vxworks binary sem return value
-  * add vxworks shm header
-  * added define to CLOCK_XXX and use clock_nanosleep
+  * fix: rename python_rkgui to only rkgui due to stupid 51 char limitation of conan
+  * change: splitted rkgui pluging
+  * update msgdef dependency
+  * add url to conanfile to reduce noise
+  * debug: log contained objects
+  * experimental fix: remove previous content of container
+  * improve scrolling behavior
+  * Merge remote-tracking branch 'origin/feat/py3-support.futurize' into feat/py3-support
+  * feat/py3: apply futurize to convert
+  * fix: prefix for math function
+  * fix: get rid of glob-star import
+  * feat/python3
+  * fix: API changes in Gtk3
+  * chore: avoid dependency clash during testing
+  * convert for GTK3
 
- -- Robert Burger <robert.burger@dlr.de>  Fri, 11 Aug 2023 12:36:37 +0200
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 22 Feb 2023 10:05:20 +0100
 
-libosal (0.0.1) unstable; urgency=low
+service-provider-process-data-inspection (5.0.3) unstable; urgency=low
 
-  * add: missing mq header
-  * fix: osal_timer_gettime_nsec calcution now done with integer datatype
-  * fix: don't set task priority to 0 on pikeos
-  * Merge branch 'release/0.0.1' of rmc-github.robotic.dlr.de:common/libosal into release/0.0.1
-  * change: pikeos uses thread creation wrapper to ensure thread is started before return
-  * fix: passing thread attribute on pikeos
-  * don't build logger on win mingw32
-  * add mingw flag
-  * fix: pikeos build with shm-logging funcs
-  * Merge branch 'release/0.0.1-shm-logger' into release/0.0.1
-  * Merge branch 'release/0.0.1-shm-logger' into release/0.0.1
-  * Merge branch 'release/0.0.1' into release/0.0.1-shm-logger
-  * changed: timer datatypes to unsigned and added osal_sleep_until_nsec
-  * Merge branch 'release/0.0.1' of rmc-github.robotic.dlr.de:common/libosal into release/0.0.1
-  * change: do not release libtool la file
-  * fix: changed timespec_sub to static linkage
-  * change: osal_io_shm init
-  * fix: logger pikeos build
-  * add: missing files for logger
-  * add: some tests to print directly to a shared memory buffer instead of stdout
-  * add: install of missing posix header
-  * add: osal_sleep_until func
-  * add: message queue close func
-  * add: send and receive mq funcs
-  * fix: mingw build
-  * add: mq stuff
-  * fix: pikeos shm_open sig
-  * change: add attributes to shm_map
-  * fix: build on mingw missing shm_open
-  * impl: shm_open on posix
-  * fix: win32 datatypes
-  * add: visual studio project files
-  * Merge branch 'release/0.0.1' of rmc-github.robotic.dlr.de:common/libosal into release/0.0.1
-  * add: win32 binary sem implementation
-  * fix: build system
-  * Merge branch 'main' into release/0.0.1
-  * add: win32 semaphore implementation
-  * add: win32 headers and mutex stuff
-  * add: win32 mutex source test
-  * fix: linker flags
-  * add: -no-undefined
-  * fix: mingw compiles
-  * add: missing include for mingw
-  * Update README.md
-  * Create README.md
-  * add: posix shm source
-  * add: posix shm header
-  * add true and false defines
-  * fix: argument of osal_shm_map
-  * fix: return values now osal_retval_t, minor changes
-  * add: initial shm version of shm
-  * change: improved flags creating mutexes and conditions
-  * fix: pikeos condvar timeout
-  * fixed pikeos timeouts
-  * semaphore timeout for pikeos
-  * removed debug print
-  * add: timer funcs for pikeos
-  * change: descrtiption
-  * fix: misra compliance
-  * fix: types to precise types
-  * add: off_t type
-  * add: osal_printf func
-  * fix: some misra compliance stuff
-  * fix: returned error if sem_post failed!
-  * add: missing queue header
-  * small pikeos fixes
-  * removed vxworks build, currently not working on jenkins
-  * fix: const parameter
-  * add: pikeos binary semaphore
-  * fix: retvals in posix stuff
-  * add: pikeos semaphore impl
-  * add: osl15.4 and vxw7 build
-  * fix: pikeos builds now
-  * add: missing pikeos semaphore header
-  * add: pikeos mutex header
-  * try to fix ssize_t typedef for pikeos
-  * try to fix ssize_t typedef for pikeos
-  * try to fix ssize_t typedef for pikeos
-  * add pikeos to am_conditional
-  * add: build of pikeos source files
-  * exporting config.sub for conan
-  * fix: indenting
-  * remove forcing autoreconf all files obsolete
-  * try to add pikeos to config.sub
-  * add debug print
-  * using develop conan config repo branch
-  * add compiliation of source file
-  * add more ignores
-  * add missing files
-  * add: vxworks mutex
-  * add: pikeos build
-  * add: condition variable impl for posix
-  * add: pikeos task funcs
-  * add: task call for setting/getting task attributes
-  * add: some more task funcs merged from rcu_sw_osal
-  * change: wrapped comments
-  * del: removed test code
-  * add: jenkinsfile
-  * add: rmc build files
-  * fix: setting thread attributes and clock
-  * add: include of types
-  * change: setting pthread name with prctl
-  * fix: return values of vxworks mutex
-  * add: pikeos mutex source
-  * fix: return value of posix binary_semaphore
-  * change: some misra
-  * add: comment header added
-  * add: spinlock
-  * fix: some posix thread return values
-  * add: pikeos main source
-  * add: git ignores
-  * fix: posix mutex return values
-  * add: some more vxworks stuff
-  * add: some vxworks headers
-  * add: trywait to bin semaphore
-  * change: posix thread spawn wrapper to set prio and affinity
-  * fix: add missing include
-  * fix: return value of sem_timedwait
-  * add: extern C ...
-  * change: add initial val to semaphore
-  * add: counting semaphore impl
-  * add signed size type
-  * add: timer stuff
-  * add: conanfile
-  * change: added more headers and task impl
-  * add: license header
-  * add: more headers
-  * add: initial commit
+  * CHANGE: switching to yaml service definition files
 
- -- Robert Burger <robert.burger@dlr.de>  Mon, 20 Feb 2023 11:10:14 +0100
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 4 Feb 2022 10:45:40 +0100
+
+service-provider-process-data-inspection (5.0.2) unstable; urgency=low
+
+  * added gui plugin
+  * switching to defaults
+  * changed to version 5 instead of 5.0
+  * using conan template
+
+ -- Robert Burger <robert.burger@dlr.de>  Thu, 27 Feb 2020 14:26:42 +0100
+
+service-provider-process-data-inspection (5.0.1) unstable; urgency=low
+
+  * changed targets
+  * Merge branch 'release/5.0.1'
+  * added architectures
+  * added architectures
+  * added architectures
+  * added architectures
+  * fixed jenkinsfile
+  * fixed jenkinsfile
+  * added architectures
+  * added architectures
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * Merge branch 'release/5.0.1' of rmc-github.robotic.dlr.de:robotkernel/service-provider-process-data-inspection into release/5.0.1
+  * new conan recipe
+  * added better md names
+  * updated jenkins file
+  * fixed deps, added build archs
+  * chore: conan support
+  * fix: version
+
+ -- Robert Burger <robert.burger@dlr.de>  Thu, 24 Oct 2019 07:14:05 +0200
+
+service-provider-process-data-inspection (5.0.0) unstable; urgency=low
+
+  * Prep 5.0.0 release
+  * auto commit
+  * set supported languages to c++
+  * latest
+  * latest changes before renaming project
+  * fixed generation of lnc include file, fixed service definition to match yaml 1.2 spec
+  * fix: dependencies
+  * fixed: removed dead link to scripts makefile
+  * fixed doc, desc, and version
+  * fixed lnc include file
+  * removed ln message defs
+  * fixed service prefix
+  * fixed install header rule
+  * readded provider header
+  * name fix
+  * fixes for latest rk changes
+  * removed wrong libdir
+  * added new dependency resolution
+  * added install rule for pc file
+  * autotools build
+  * fixed template args
+  * latest rk-5 mods
+  * changes for robotkernel-5
+  * changes for robotkernel-5
+  * no_ln work
+
+ -- Robert Burger <robert.burger@dlr.de>  Mon, 12 Mar 2018 09:34:25 +0100
+
+service-provider-process-data-inspection (4.1.0) unstable; urgency=low
+
+  * 'automated_commit'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * removed pt file filtering
+  * 'scripts_updated'
+  * 'replaced_with_default'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * Merge branch 'master' of rmc-github.robotic.dlr.de:robotkernel/interface_process_data_inspection
+  * 'scripts_updated'
+  * respect $(DESTDIR) when installing
+
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 30 Nov 2016 10:28:05 +0100
+
+service-provider-process-data-inspection (4.0.4) unstable; urgency=low
+
+  * version increment
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Fri, 12 Aug 2016 12:28:19 +0200
+
+service-provider-process-data-inspection (4.0.3) unstable; urgency=low
+
+  * version increment
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Fri, 12 Aug 2016 10:37:41 +0200
+
+service-provider-process-data-inspection (4.0.2) unstable; urgency=low
+
+  * fixing include path
+  * 'scripts_updated'
+  * added gitignore
+  * fixed build, added osl42 to archs
+  * 'scripts_updated'
+  * "transforming"
+  * 'scripts_updated'
+  * removed duplicated vxworks arch
+  * updated scripts
+  * added submodule scripts
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Thu, 11 Aug 2016 11:36:20 +0200
+
+service-provider-process-data-inspection (4.0.1) unstable; urgency=low
+
+  * 
+  * 
+  * inc version
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 2 Oct 2015 11:49:15 +0000
+
+service-provider-process-data-inspection (4.0.0) unstable; urgency=low
+
+  * removed yaml flags
+  * added ignores
+  * removed m4
+  * prep 4.0.0 switch yaml-cpp 0.5.2 switched new loglevels
+
+ -- Robert Burger <robert.burger@dlr.de>  Tue, 15 Sep 2015 07:21:57 +0000
+
+service-provider-process-data-inspection (3.1.1) unstable; urgency=low
+
+  * prep 3.1.1
+  * prep 3.1.1
+  * prep 3.1.1
+  * use Makefile.suggested and rmpm.m4 from scripts, added ubuntu12.04-armhf-gcc4.x
+  * use Makefile.suggested and rmpm.m4 from scripts, added ubuntu12.04-armhf-gcc4.x
+
+ -- Florian Schmidt <Florian.Schmidt@dlr.de>  Sat, 16 May 2015 08:10:56 +0000
+
+service-provider-process-data-inspection (3.1.0) unstable; urgency=low
+
+  * prep 3.1.0
+
+ -- Robert Burger <robert.burger@dlr.de>  Mon, 2 Feb 2015 06:51:12 +0000
+
+service-provider-process-data-inspection (3.0.3) unstable; urgency=low
+
+  * new release with better packet receive handling
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 5 Dec 2014 11:40:41 +0000
+
+service-provider-process-data-inspection (3.0.2) unstable; urgency=low
+
+  * prep 3.0.2
+  * fixed loglevel to interface ones
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 5 Dec 2014 09:13:48 +0000
+
+service-provider-process-data-inspection (3.0.1) unstable; urgency=low
+
+  * new 3.0.2 release
+  * prep 3.0.1 - pd returns NULL
+  * check GET_PDIN/OUT retval
+
+ -- Robert Burger <robert.burger@dlr.de>  Tue, 30 Sep 2014 08:56:41 +0000
+
+service-provider-process-data-inspection (3.0.0) unstable; urgency=low
+
+  * build of process data inspection works
+  * added externals scripts
+  * moved message defintions
+  * imported from: https://rmsvn01.robotic.dlr.de/repos/f_soft_src/robotkernel/trunk/src/interfaces/process_data_inspection rev: 43495
+  * creating svn directory 'https://rmsvn01.robotic.dlr.de/software/robotkernel/src/interface_process_data_inspection/trunk' [rmpm admintool (burger_r, 2014-08-06-14-27-25)]
+
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 6 Aug 2014 12:54:20 +0000
 
