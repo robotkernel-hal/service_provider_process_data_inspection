@@ -11,7 +11,7 @@ class MainProject(ConanFile):
     description = "robotkernel service provider for process data inspeciton."
     exports_sources = ["*", "!.gitignore", "!bindings"]
 
-    tool_requires = ["robotkernel_service_helper/[~6]@robotkernel/snapshot"]
+    tool_requires = ["robotkernel_service_helper/6.0.0-vec-rework@robotkernel/unstable"]
 
     def requirements(self):
         self.requires(f"{self.name}_ln_msgdef/{self.version}@{self.user}/{self.channel}")
