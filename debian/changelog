@@ -1,0 +1,244 @@
+service-provider-process-data-inspection (6.0.0~pre1) unstable; urgency=low
+
+  * Prep: 6.0.0
+
+ -- Burger, Robert <robert.burger@dlr.de>  Wed, 23 Oct 2024 09:39:13 +0200
+
+service-provider-process-data-inspection (5.1.5) unstable; urgency=low
+
+  * Merge pull request #7 from robotkernel/pkg-clear_include_dirs
+  * pkg: clear includedirs default
+
+ -- Burger, Robert <robert.burger@dlr.de>  Wed, 23 Oct 2024 09:39:13 +0200
+
+service-provider-process-data-inspection (5.1.4) unstable; urgency=low
+
+  * Merge pull request #5 from robotkernel/feat/conan2
+  * feat: conan2
+
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Tue, 30 Jan 2024 15:13:43 +0100
+
+service-provider-process-data-inspection (5.1.3) unstable; urgency=low
+
+  * Merge pull request #4 from robotkernel/feat/conan2_syntax
+  * chore(rmc build): use build profiles
+  * chore: black format
+  * feat: port rkgui to conan2 syntax
+  * chore: black format
+  * feat: port to conan2 syntax
+
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Fri, 17 Nov 2023 12:46:43 +0100
+
+service-provider-process-data-inspection (5.1.2) unstable; urgency=low
+
+  * Merge pull request #3 from robotkernel/release/5.1.2
+  * using new service_helper classes
+
+ -- Mühlbauer, Maximilian Sebastian <Maximilian.Muehlbauer@dlr.de>  Thu, 10 Aug 2023 20:10:07 +0200
+
+service-provider-process-data-inspection (5.1.1) unstable; urgency=low
+
+  * fix: expand paned view
+  * fix: python path
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 24 Feb 2023 13:24:20 +0100
+
+service-provider-process-data-inspection (5.1.0) unstable; urgency=low
+
+  * fix: rename python_rkgui to only rkgui due to stupid 51 char limitation of conan
+  * change: splitted rkgui pluging
+  * update msgdef dependency
+  * add url to conanfile to reduce noise
+  * debug: log contained objects
+  * experimental fix: remove previous content of container
+  * improve scrolling behavior
+  * Merge remote-tracking branch 'origin/feat/py3-support.futurize' into feat/py3-support
+  * feat/py3: apply futurize to convert
+  * fix: prefix for math function
+  * fix: get rid of glob-star import
+  * feat/python3
+  * fix: API changes in Gtk3
+  * chore: avoid dependency clash during testing
+  * convert for GTK3
+
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 22 Feb 2023 10:05:20 +0100
+
+service-provider-process-data-inspection (5.0.3) unstable; urgency=low
+
+  * CHANGE: switching to yaml service definition files
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 4 Feb 2022 10:45:40 +0100
+
+service-provider-process-data-inspection (5.0.2) unstable; urgency=low
+
+  * added gui plugin
+  * switching to defaults
+  * changed to version 5 instead of 5.0
+  * using conan template
+
+ -- Robert Burger <robert.burger@dlr.de>  Thu, 27 Feb 2020 14:26:42 +0100
+
+service-provider-process-data-inspection (5.0.1) unstable; urgency=low
+
+  * changed targets
+  * Merge branch 'release/5.0.1'
+  * added architectures
+  * added architectures
+  * added architectures
+  * added architectures
+  * fixed jenkinsfile
+  * fixed jenkinsfile
+  * added architectures
+  * added architectures
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * build: updated build/ci files for cissy 1.0->2.0
+  * Merge branch 'release/5.0.1' of rmc-github.robotic.dlr.de:robotkernel/service-provider-process-data-inspection into release/5.0.1
+  * new conan recipe
+  * added better md names
+  * updated jenkins file
+  * fixed deps, added build archs
+  * chore: conan support
+  * fix: version
+
+ -- Robert Burger <robert.burger@dlr.de>  Thu, 24 Oct 2019 07:14:05 +0200
+
+service-provider-process-data-inspection (5.0.0) unstable; urgency=low
+
+  * Prep 5.0.0 release
+  * auto commit
+  * set supported languages to c++
+  * latest
+  * latest changes before renaming project
+  * fixed generation of lnc include file, fixed service definition to match yaml 1.2 spec
+  * fix: dependencies
+  * fixed: removed dead link to scripts makefile
+  * fixed doc, desc, and version
+  * fixed lnc include file
+  * removed ln message defs
+  * fixed service prefix
+  * fixed install header rule
+  * readded provider header
+  * name fix
+  * fixes for latest rk changes
+  * removed wrong libdir
+  * added new dependency resolution
+  * added install rule for pc file
+  * autotools build
+  * fixed template args
+  * latest rk-5 mods
+  * changes for robotkernel-5
+  * changes for robotkernel-5
+  * no_ln work
+
+ -- Robert Burger <robert.burger@dlr.de>  Mon, 12 Mar 2018 09:34:25 +0100
+
+service-provider-process-data-inspection (4.1.0) unstable; urgency=low
+
+  * 'automated_commit'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * removed pt file filtering
+  * 'scripts_updated'
+  * 'replaced_with_default'
+  * 'scripts_updated'
+  * 'scripts_updated'
+  * Merge branch 'master' of rmc-github.robotic.dlr.de:robotkernel/interface_process_data_inspection
+  * 'scripts_updated'
+  * respect $(DESTDIR) when installing
+
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 30 Nov 2016 10:28:05 +0100
+
+service-provider-process-data-inspection (4.0.4) unstable; urgency=low
+
+  * version increment
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Fri, 12 Aug 2016 12:28:19 +0200
+
+service-provider-process-data-inspection (4.0.3) unstable; urgency=low
+
+  * version increment
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Fri, 12 Aug 2016 10:37:41 +0200
+
+service-provider-process-data-inspection (4.0.2) unstable; urgency=low
+
+  * fixing include path
+  * 'scripts_updated'
+  * added gitignore
+  * fixed build, added osl42 to archs
+  * 'scripts_updated'
+  * "transforming"
+  * 'scripts_updated'
+  * removed duplicated vxworks arch
+  * updated scripts
+  * added submodule scripts
+
+ -- Jan Cremer <jan.cremer@dlr.de>  Thu, 11 Aug 2016 11:36:20 +0200
+
+service-provider-process-data-inspection (4.0.1) unstable; urgency=low
+
+  * 
+  * 
+  * inc version
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 2 Oct 2015 11:49:15 +0000
+
+service-provider-process-data-inspection (4.0.0) unstable; urgency=low
+
+  * removed yaml flags
+  * added ignores
+  * removed m4
+  * prep 4.0.0 switch yaml-cpp 0.5.2 switched new loglevels
+
+ -- Robert Burger <robert.burger@dlr.de>  Tue, 15 Sep 2015 07:21:57 +0000
+
+service-provider-process-data-inspection (3.1.1) unstable; urgency=low
+
+  * prep 3.1.1
+  * prep 3.1.1
+  * prep 3.1.1
+  * use Makefile.suggested and rmpm.m4 from scripts, added ubuntu12.04-armhf-gcc4.x
+  * use Makefile.suggested and rmpm.m4 from scripts, added ubuntu12.04-armhf-gcc4.x
+
+ -- Florian Schmidt <Florian.Schmidt@dlr.de>  Sat, 16 May 2015 08:10:56 +0000
+
+service-provider-process-data-inspection (3.1.0) unstable; urgency=low
+
+  * prep 3.1.0
+
+ -- Robert Burger <robert.burger@dlr.de>  Mon, 2 Feb 2015 06:51:12 +0000
+
+service-provider-process-data-inspection (3.0.3) unstable; urgency=low
+
+  * new release with better packet receive handling
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 5 Dec 2014 11:40:41 +0000
+
+service-provider-process-data-inspection (3.0.2) unstable; urgency=low
+
+  * prep 3.0.2
+  * fixed loglevel to interface ones
+
+ -- Robert Burger <robert.burger@dlr.de>  Fri, 5 Dec 2014 09:13:48 +0000
+
+service-provider-process-data-inspection (3.0.1) unstable; urgency=low
+
+  * new 3.0.2 release
+  * prep 3.0.1 - pd returns NULL
+  * check GET_PDIN/OUT retval
+
+ -- Robert Burger <robert.burger@dlr.de>  Tue, 30 Sep 2014 08:56:41 +0000
+
+service-provider-process-data-inspection (3.0.0) unstable; urgency=low
+
+  * build of process data inspection works
+  * added externals scripts
+  * moved message defintions
+  * imported from: https://rmsvn01.robotic.dlr.de/repos/f_soft_src/robotkernel/trunk/src/interfaces/process_data_inspection rev: 43495
+  * creating svn directory 'https://rmsvn01.robotic.dlr.de/software/robotkernel/src/interface_process_data_inspection/trunk' [rmpm admintool (burger_r, 2014-08-06-14-27-25)]
+
+ -- Robert Burger <robert.burger@dlr.de>  Wed, 6 Aug 2014 12:54:20 +0000
+
