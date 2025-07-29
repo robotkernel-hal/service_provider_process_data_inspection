@@ -3,3 +3,7 @@ SUBDIRS=src
 
 pkgconfig_DATA = service_provider_process_data_inspection.pc
 
+install-exec-hook:
+	mkdir -p $(DESTDIR)$(prefix)/bindings/python
+	-cp -rauf $(srcdir)/bindings/python/* $(DESTDIR)$(prefix)/bindings/python
+
