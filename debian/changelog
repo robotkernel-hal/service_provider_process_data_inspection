@@ -1,6 +1,7 @@
 service-provider-process-data-inspection (6.0.0~pre1) unstable; urgency=low
 
   * Prep: 6.0.0
+  * update: debian dcos
 
  -- Burger, Robert <robert.burger@dlr.de>  Wed, 23 Oct 2024 09:39:13 +0200
 
