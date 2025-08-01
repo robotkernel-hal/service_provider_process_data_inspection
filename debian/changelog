@@ -1,4 +1,4 @@
-service-provider-process-data-inspection (6.0.0~pre1) unstable; urgency=low
+service-provider-process-data-inspection (6.0.0~pre2) unstable; urgency=low
 
   * Prep: 6.0.0
   * update: debian dcos
