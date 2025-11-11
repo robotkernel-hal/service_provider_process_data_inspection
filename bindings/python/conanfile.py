@@ -23,7 +23,7 @@ class lnrk_interface_python(ConanFile):
 
     def package_info(self):
         pypath1 = os.path.join(self.package_folder, "rk_gtk3_gui_plugin")
-        pypath2 = os.path.join(self.package_folder, "rk_gtk_gui_plugin")
+        pypath2 = os.path.join(self.package_folder, "rk_gui_plugin")
         if Version(conan_version) < "2.0.0":
             self.env_info.PYTHONPATH.append(pypath1)
             self.env_info.PYTHONPATH.append(pypath2)
