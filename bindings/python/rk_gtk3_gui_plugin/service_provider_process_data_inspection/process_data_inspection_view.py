@@ -39,7 +39,7 @@ class process_data_inspection_view(helpers.service_provider_view, helpers.builde
     def __init__(self, parent, container):
         fn = os.path.join(os.path.dirname(__file__), 'process_data_inspection_view.ui')
         helpers.builder_base.__init__(self, fn, 'process_data_inspection_box', 'pdi_adjustment')
-        helpers.service_provider_view.__init__(self, parent.app, parent, self.process_data_inspection_box, 'in')
+        helpers.service_provider_view.__init__(self, parent.app, parent, self.process_data_inspection_box, 'pd_inspect')
 
         # remove all previous content of the container
         def print_wids(widget, user_data=None):

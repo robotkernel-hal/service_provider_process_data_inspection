@@ -26,6 +26,6 @@ class process_data_inspection_device(helpers.svc_wrapper):
         self.inspection_data = []
 
     def update(self):
-        self.svc_pd_inspection.call()
-        self.inspection_data = self.svc_pd_inspection.resp.data
+        self.svc_pd_inspect.call()
+        self.inspection_data = self.svc_pd_inspect.resp.data
 
