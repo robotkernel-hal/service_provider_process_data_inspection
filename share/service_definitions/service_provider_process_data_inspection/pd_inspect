@@ -1,5 +1,6 @@
-name: service_provider_process_data_inspection/pd_inspect
-response:
-- vector/uint8_t: data
-- string: error_message
+services:
+  - name: service_provider_process_data_inspection/pd_inspect
+    response:
+      - { name: data, type: uint8_t, array: true }
+      - { name: error_message, type: string, default: "no error" }
 
