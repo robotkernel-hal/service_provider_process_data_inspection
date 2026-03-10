@@ -20,5 +20,5 @@ SERVICE_DEFINITIONS = service_provider_process_data_inspection/pd_inspect
 
 $(top_builddir)/src/service_definitions.h: Makefile $(SERVICE_DEFINITIONS)
 	@echo creating $@
-	service_generate --indir $(top_srcdir)/share/service_definitions --out $@ $(SERVICE_DEFINITIONS)
+	rk_generate --indir $(top_srcdir)/share/service_definitions --out $@ $(SERVICE_DEFINITIONS)
 	touch $@
