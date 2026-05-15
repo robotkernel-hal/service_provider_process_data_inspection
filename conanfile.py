@@ -3,7 +3,7 @@ import os
 
 
 class MainProject(ConanFile):
-    python_requires = "conan_template/[~6]@robotkernel/unstable"
+    python_requires = "conan_template/[~6]@robotkernel/stable"
     python_requires_extend = "conan_template.RobotkernelConanFile"
 
     name = "service_provider_process_data_inspection"
@@ -11,7 +11,7 @@ class MainProject(ConanFile):
     description = "robotkernel service provider for process data inspeciton."
     exports_sources = ["*", "!.gitignore", "!bindings"]
 
-    tool_requires = ["robotkernel_generator/[~6]@robotkernel/unstable"]
+    tool_requires = ["robotkernel_generator/[~6]@robotkernel/stable"]
 
     def requirements(self):
         self.requires(f"{self.name}_ln_msgdef/{self.version}@{self.user}/{self.channel}")
